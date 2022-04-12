@@ -27,6 +27,7 @@ As a user, I can interact with party members through the party chat.
 # EMD - Entity Model Diagram
 ![EMD](./LFG-EMD.png)
 # Wireframes
+![wireframe](./lfg-wireframe.PNG)
 # MVP
 User must be able to register a user account.
 User must be able to edit his/her profile. This includes gamer profiles, user photo, etc.
