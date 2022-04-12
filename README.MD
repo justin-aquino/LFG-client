@@ -31,29 +31,33 @@ LFG allows a user to create a party relating to the specific game the user is pl
  ## URL Chart
 | Path | Purpose |
 | ------ | ---- |
-|/register | Register page 
+| /register | Register page 
 | /login | Login Page
 | /logout| Logs out user and redirect to login page.
 | /dashboard | manage users page update user info (change password, etc), Overview of user's most played games. 
 | /games | view our top 10 games
 | /games/browse | Query/Browse into game API
-| /game/party | CRUD of active parties in game chosen. (toggle which component to show: CREATE a party, READ list of parties, EDIT party info, DELETE party etc.)
+| /games | CRUD of active parties in game chosen. (toggle which component to show: CREATE a party, READ list of parties, EDIT party info, DELETE party etc.)
+| /party | List all parties.
+
 
 ## Routing Chart (Server)
 | Method | Path | Purpose |
 | ------ | ---- | ------- |
 | GET | /users | Gets all user information from database
+| GET | /users/:id | Gets user information from database
 | POST | /users/register | Adds a new user to the database
 | POST | /users/login | Validates user’s credentials and logs the user in 
 | PUT | /users/:id | Makes changes to values of certain key properties that a user can have (i.e., their name, password)
 | DEL | /users/:id | Deletes a user from the database
-| GET | /games | Gets all games and their information from database
 | POST | /games | Adds a new game in the database
-| POST | /games/:game_id/party | Posting a new listing for a clan/party.
-| GET | /games/:game_id/party | Gets the list of active parties in a specific game.
-| PUT | /games/:game_id/:party_id | Makes changes to information regarding an specific party.
-| PUT | /games/:game_id/:party_id | Send a "join party request" (Edit the members sub-document inside the party schema.)
-| DEL | /game/:game_id/:party_id | Deletes a specific party listing. 
+| GET | /games | Gets all games and their information from database
+| GET | /games/:id | Gets information about the game from the database.
+| POST | /party/ | Posting a new listing for a clan/party.
+| GET | /party | Gets the list of active parties in a specific game.
+| PUT | /party/:id | Makes changes to information regarding an specific party.
+| PUT | /party/:id/request | Send a "join party request" (Push the member to requestSchema sub-document inside the party schema.)/Move the user to memberSchema subdoc.
+| DEL | /party/:id | Deletes a specific party listing. 
 
 # Wireframes
 ![wireframe](./lfg-wireframe.PNG)
