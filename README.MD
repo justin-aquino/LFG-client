@@ -74,7 +74,3 @@ Require a password functionality before joining a party.
 | PUT | /games/:game_id/:party_id | Send a "join party request" (Edit the members sub-document inside the party schema.)
 | DEL | /game/:game_id/:party_id | Deletes a specific party listing. 
 
-
-
-![EMD](./LFG-EMD.png)
-
