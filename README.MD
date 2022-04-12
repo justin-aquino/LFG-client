@@ -1,5 +1,3 @@
-#LFG - Looking for Group
-
 # Introduction
 
 Are you a gamer? Feeling alone? Tired of solo queueing? Need help raiding? Don’t cry anymore! Your prayers have been answered. We introduce you to our web-based app targeting solo gamers looking for groups to party with and interact. 
