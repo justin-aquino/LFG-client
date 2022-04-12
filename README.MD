@@ -1,3 +1,5 @@
+#LFG - Looking for Group
+
 # Introduction
 
 Are you a gamer? Feeling alone? Tired of solo queueing? Need help raiding? Don’t cry anymore! Your prayers have been answered. We introduce you to our web-based app targeting solo gamers looking for groups to party with and interact. 
@@ -70,3 +72,8 @@ Require a password functionality before joining a party.
 | PUT | /games/:game_id/:party_id | Makes changes to information regarding an specific party.
 | PUT | /games/:game_id/:party_id | Send a "join party request" (Edit the members sub-document inside the party schema.)
 | DEL | /game/:game_id/:party_id | Deletes a specific party listing. 
+
+
+
+![EMD](./LFG-EMD.png)
+
