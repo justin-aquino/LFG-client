@@ -9,8 +9,9 @@ MERN stack
 Socket.io
 RAWG api (tbd)
 Twitch api (tbd)
-# Routes
+
 # Installation
+TBD
 # User Stories
 As a user, I want to be able to create a ‘Looking for Group’ posting online which will be searchable by other users connected.
 As a user, I have the admin privileges for the party/group that I made.
