@@ -25,7 +25,8 @@ As a user, I can view different parties on the specific game that I like.
 As a user, I can request a ‘permission to join’ on different parties.
 As a user, I can interact with party members through the party chat.
 
-# ERD
+# EMD - Entity Model Diagram
+![EMD](./LFG-EMD.png)
 # Wireframes
 # MVP
 User must be able to register a user account.
