@@ -20,7 +20,17 @@ function App() {
     username: ''
   })
   const [users, setUsers] = useState([])
-  // const [currentUserId, setCurrentUserId] = useState('')
+
+  const [games, setGames] = useState([])
+
+  useEffect(() => {
+         axios.get(`${process.env.REACT_APP_SERVER_URL}/game`)
+      .then(res=>{
+        console.log(res.data)
+        setGames(res.data)
+      })
+
+  }, [])
 
   useEffect(() => { 
     const token = localStorage.getItem('jwt')
@@ -52,7 +62,7 @@ function App() {
         <Routes>
           <Route 
             path='/games'
-            element={<Games />}
+            element={<Games games={games} setGames={setGames} />}
           />
           <Route 
             path='/games/browse'
@@ -71,7 +81,7 @@ function App() {
             element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser}/>}
           />
           <Route
-            path="/register"
+            path="/signup"
             element={<Register />}
           />
           <Route
