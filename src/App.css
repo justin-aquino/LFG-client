@@ -36,3 +36,64 @@
     transform: rotate(360deg);
   }
 }
+.navbar-logo{
+  background-color: #151414;
+  color: #FFF;
+  width: 190px;
+  margin-top: 0;
+  padding-top: 0;
+  position: fixed;
+  top: 0;
+}
+.navbar-footer{
+  background-color: #151414;
+  color: #FFF;
+  width: 190px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  position: fixed;
+  bottom: 0;
+  max-height: 120px;
+}
+.navbar-main {
+  height: 100%;
+  width: 180px;
+  position: fixed;
+  z-index: 0;
+  top: 60px;
+  left: 0;
+  background-color: #151414;
+  overflow-x: hidden;
+  padding-top: 10px;
+  padding-left: 10px;
+  font-weight: 400;
+  font-size: 20px;
+  color: #FFF;
+  border-right: 0.05rem solid gray;
+ bottom: 160px;
+}
+.navbar-main a {
+  /* padding: 6px 8px 6px 16px; */
+  text-decoration: none;
+  font-size: 25px;
+  color: #FFF;
+  display: block;
+  font-weight: 400;
+  font-size: 20px;
+  padding: 5px;
+  font-weight: 500;
+  width: 150px;
+}
+.navbar-main a:hover {  
+  /* border-left: 10px solid rgb(248, 137, 33); */
+  text-shadow: 0 0 10px #ffbf00;
+}
+.navbar-main-selected {
+  /* color: #3da5e0; */
+  /* border: 0.05rem solid gray; */
+  background-color: rgb(255, 255, 255);
+  border-radius: 0px;
+  color: rgb(240, 248, 255);
+  font-weight: 600;
+  border-left: 10px solid rgb(248, 137, 33);
+}

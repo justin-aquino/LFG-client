@@ -10,6 +10,9 @@ import { useEffect, useState } from "react"
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
 import About from './components/About';
+import Main from './components/Main';
+import Layout from './components/layouts/Layout';
+import Navibar from './components/layouts/Navibar';
 
 function App() {
   const [currentUser, setCurrentUser] = useState({
@@ -46,10 +49,13 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      <Link to="/login">
-        <button onClick={handleLogout}>Logout</button>
-      </Link>
+      <Navibar />
+       <Layout>
         <Routes>
+        <Route 
+            path='/'
+            element={<Main />}
+          />
           <Route 
             path='/games'
             element={<Games />}
@@ -79,6 +85,10 @@ function App() {
             element={<About />}
           />
         </Routes>
+        </Layout>
+      <Link to="/login">
+        <button onClick={handleLogout}>Logout</button>
+      </Link>
       </BrowserRouter>
     </div>
   );
