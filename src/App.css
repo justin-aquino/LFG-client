@@ -12,7 +12,25 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+main {
+  display: flex;
+  /* align-items: flex-start;  */
+  align-items: stretch;
+  /* flex-flow: row wrap; */
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: flex-start;
+  height: 100%;
+  padding: 0px;
+  gap: 0px;
+  justify-content: flex-start;
+  min-width: 400px;
+  width: 100%;
+  margin-left: 15px;
+  margin-right: 0;  
+  position: fixed;
+  left: 180px;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -91,6 +109,52 @@
   text-shadow: 0 0 10px #ffbf00;
 }
 .navbar-main-selected {
+  /* color: #3da5e0; */
+  /* border: 0.05rem solid gray; */
+  background-color: rgb(255, 255, 255);
+  border-radius: 0px;
+  color: rgb(240, 248, 255);
+  font-weight: 600;
+  border-left: 10px solid rgb(248, 137, 33);
+}
+
+/* this is the class for the party div */
+.navbar-party {
+  height: 100%;
+  width: 180px;
+  position: fixed;
+  z-index: 0;
+  top: 60px;
+  bottom: 500px;
+  left: 0;
+  background-color: #151414;
+  overflow-x: hidden;  
+  padding-top: 10px;
+  padding-left: 10px;
+  font-weight: 400;
+  font-size: 16px;
+  color: #FFF;
+  border-right: 0.05rem solid gray;
+  padding-bottom: 600px;
+
+}
+.navbar-party a {
+  /* padding: 6px 8px 6px 16px; */
+  text-decoration: none;
+  font-size: 25px;
+  color: #FFF;
+  display: block;
+  font-weight: 400;
+  font-size: 20px;
+  padding: 5px;
+  font-weight: 500;
+  width: 150px;
+}
+.navbar-party a:hover {  
+  /* border-left: 10px solid rgb(248, 137, 33); */
+  text-shadow: 0 0 10px #ffbf00;
+}
+.navbar-party-selected {
   /* color: #3da5e0; */
   /* border: 0.05rem solid gray; */
   background-color: rgb(255, 255, 255);
