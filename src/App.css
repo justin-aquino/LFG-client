@@ -61,16 +61,18 @@
   position: fixed;
   z-index: 0;
   top: 60px;
+  bottom: 500px;
   left: 0;
   background-color: #151414;
-  overflow-x: hidden;
+  overflow-x: hidden;  
   padding-top: 10px;
   padding-left: 10px;
   font-weight: 400;
-  font-size: 20px;
+  font-size: 16px;
   color: #FFF;
   border-right: 0.05rem solid gray;
- bottom: 160px;
+  margin-bottom: 600px;
+
 }
 .navbar-main a {
   /* padding: 6px 8px 6px 16px; */
