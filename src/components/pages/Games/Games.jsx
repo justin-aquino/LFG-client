@@ -7,7 +7,7 @@ const Games = ({games, setGames}) => {
 
   const gamesMap = games.map((element, idx)=>{
     return (
-      <div style={{backgroundColor: "pink"}}>
+      <div style={{backgroundColor: "#151414"}}>
         <img width="75" key={`game-icon-${idx}`} src={element.icon} alt={element.name} />
       </div>
     )

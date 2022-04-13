@@ -59,17 +59,17 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      <Navibar />
+      <Navibar games={games} setGames={setGames} />
        <Layout>
         <Routes>
         <Route 
             path='/'
             element={<Main />}
           />
-          <Route 
+          {/* <Route 
             path='/games'
             element={<Games games={games} setGames={setGames} />}
-          />
+          /> */}
           <Route 
             path='/games/browse'
             element={<SearchGames />}
