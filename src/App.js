@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 import Login from "./components/Login"
-import Games from './components/pages/Games/Games';
-import Parties from './components/pages/Parties/Parties';
+import Games from './components/Games';
+import Parties from './components/Party';
 import Dashboard from './components/pages/Users/Dashboard';
 import Register from "./components/Register"
 import SearchGames from './components/pages/Games/SearchGames';
@@ -13,6 +13,7 @@ import About from './components/About';
 import Main from './components/Main';
 import Layout from './components/layouts/Layout';
 import Navibar from './components/layouts/Navibar';
+import Party from './components/Party';
 
 function App() {
   const [currentUser, setCurrentUser] = useState({
@@ -25,7 +26,8 @@ function App() {
   const [users, setUsers] = useState([])
 
   const [games, setGames] = useState([])
-
+  const [currentGame, setCurrentGame] = useState([])
+  
   useEffect(() => {
          axios.get(`${process.env.REACT_APP_SERVER_URL}/game`)
       .then(res=>{
@@ -59,7 +61,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      <Navibar games={games} setGames={setGames} />
+      <Navibar games={games} setGames={setGames} currentGame={currentGame} setCurrentGame={setCurrentGame} />
        <Layout>
         <Routes>
         <Route 
@@ -71,13 +73,17 @@ function App() {
             element={<Games games={games} setGames={setGames} />}
           /> */}
           <Route 
+            path='/games'
+            element={<Games />}
+          />
+          <Route 
             path='/games/browse'
             element={<SearchGames />}
           />
-          <Route 
+          {/* <Route 
             path='/game/party'
             element={<Parties />}
-          />
+          /> */}
           <Route 
             path='/dashboard'
             element={<Dashboard />}
@@ -93,6 +99,10 @@ function App() {
           <Route
             path="/about"
             element={<About />}
+          />
+          <Route
+            path="/party"
+            element={<Party />}
           />
         </Routes>
         </Layout>

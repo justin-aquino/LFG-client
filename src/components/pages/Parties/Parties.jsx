@@ -1,9 +1,7 @@
-import React from 'react'
-
-const Parties = () => {
-  return (
-    <div><h1>Parties List</h1></div>
+export default function Parties() {
+  return(
+    <>
+    Party list 
+    </>
   )
 }
-
-export default Parties
