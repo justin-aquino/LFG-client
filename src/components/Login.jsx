@@ -1,84 +1,95 @@
-import { useState } from 'react'
-import axios from 'axios'
-import jwt_decode from 'jwt-decode'
-import { Navigate } from 'react-router-dom'
+import { useState } from "react"
+import axios from "axios"
+import jwt_decode from "jwt-decode"
+import { Navigate } from "react-router-dom"
+// import "../layout/Login.css"
 
-export default function Login ({ currentUser, setCurrentUser }) {
+export default function Login({ currentUser, setCurrentUser }) {
   const [form, setForm] = useState({
-    username: '',
-    password: ''
+    username: "",
+    password: "",
   })
 
-  const [message, setMessage] = useState('')
-//   console.log(form.email)
+  const [msg, setMessage] = useState("")
 
-  const handleFormSubmit = async e => {
-    // e.preventDefault()
-    // try {
-      
-    //   const response = await axios.post(
-    //     `${process.env.REACT_APP_SERVER_URL}/api-v1/users/login`,
-    //     form)
-        
-    
-    //   // decode the token that is sent to me
-    //   const { token } = response.data
-    //   const decoded = jwt_decode(token)
-    // //   console.log(decoded)
+  const handleFormSubmit = async (e) => {
+    e.preventDefault()
+    try {
+      // post to the backend with the form data to login
+      const response = await axios.post(
+        `${process.env.REACT_APP_SERVER_URL}/users/login`,
+        form
+      )
 
-    //   // save the token in localStorage
-    //   localStorage.setItem('jwt', token)
+      // decode the token that is sent to use
+      const { token } = response.data
+      const decoded = jwt_decode(token)
 
-    //   // sets the app state to the logged in user
-    //   setCurrentUser(decoded)
+      // save the token in the localStorage
+      localStorage.setItem("jwt", token)
 
-    // } catch (err) {
-    //   console.log(err)
-    //   if(err.response.status === 409 || err.response.status === 406) {
-    //         // console.log(err.response.data)
-    //         setMessage('Invalid login credentials.')
-    //         // console.log(err.response.data.message)
-    //     }
-      
-    // //   console.log(message)
-    // }
+      // set the state to the logged in user
+      // console.log(decoded)
+      setCurrentUser(decoded)
+    } catch (err) {
+      // handle errors such as wrong credentials
+      if (err.response.status === 400) {
+        console.log(err.response.data)
+        setMessage(err.response.data.msg)
+      }
+      console.log(err)
+    }
   }
 
-
-  if (currentUser) return <Navigate to='/dashboard' />
-
+  // navigate to the user's profile if currentUser is NOT null
+  if (currentUser) return <Navigate to="/dashboard" />
   return (
-    <>    
-    <div className='flex-container'><h3>Login</h3></div>      
-    <div className='flex-container'>    
-        <div className='form-container'>        
+    <div className="container">
+      <div className="title-Main">
+
+      </div>
+      <div className="formContainer">
+        <div className="subMain">
+          <h1 className="sign-in">Sign In</h1>
+          <h5 className="error-msg">{msg ? `${msg}` : ""}</h5>
+        </div>
+
         <form onSubmit={handleFormSubmit}>
-          <p>
-            <label htmlFor='username'>Username:</label>         
+          {/* Email Input */}
+          <div>
+            <label htmlFor="username"></label>
             <input
-              id='username'
-              type='text'
-              onChange={e => setForm({ ...form, username: e.target.value })}
+              type="text"
+              id="username"
+              onChange={(e) => setForm({ ...form, username: e.target.value })}
               value={form.username}
-              required
+              placeholder="username"
+              
             />
-          </p>
-          <p>
-            <label htmlFor='password'>Password:</label>          
+          </div>
+          <div>
+            {/* Password Input */}
+            <label htmlFor="password"></label>
             <input
-              id='password'
-              type='password'
-              onChange={e => setForm({ ...form, password: e.target.value })}
+              type="password"
+              id="password"
+              onChange={(e) => setForm({ ...form, password: e.target.value })}
               value={form.password}
-              required
+              placeholder="password"
+              className="passwordInput"
             />
+          </div>
+          <button type="submit" className="enterButton">
+            Enter
+          </button>
+          <p>
+            Don't have an account?{" "}
+            <a href="/signup" className="a-tag">
+              Create one
+            </a>
           </p>
-          <button type='submit'>Submit</button>
-        </form>        
-        <p className='error-message'>{message ? `${message}` : ''}</p>
-      
+        </form>
       </div>
-      </div>
-    </>
+    </div>
   )
 }

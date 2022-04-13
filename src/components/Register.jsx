@@ -21,7 +21,7 @@ export default function Register ({ currentUser, setCurrentUser, setUsers }) {
     try {
       if(form.password === passwordCheck)  {
         const response = await axios.post(
-          `${process.env.REACT_APP_SERVER_URL}/api-v1/users/register`,
+          `${process.env.REACT_APP_SERVER_URL}/users/register`,
           form
         )
         // get the token from the response
@@ -33,7 +33,7 @@ export default function Register ({ currentUser, setCurrentUser, setUsers }) {
         // log the user in
         setCurrentUser(decoded)
         return axios
-          .get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users`)
+          .get(`${process.env.REACT_APP_SERVER_URL}/users`)
           .then(response => setUsers(response.data))
       } else {
         setMessage(`Passwords do not match.`)
@@ -65,24 +65,6 @@ export default function Register ({ currentUser, setCurrentUser, setUsers }) {
                 id='username'
                 value={form.username}
                 onChange={e => setForm({ ...form, username: e.target.value })}
-              />
-            </p>
-            <p>
-              <label htmlFor='firstname'>First Name:</label>
-              <input
-                type='text'
-                id='firstname'
-                value={form.firstname}
-                onChange={e => setForm({ ...form, firstname: e.target.value })}
-              />
-            </p>
-            <p>
-              <label htmlFor='lastname'>Last Name:</label>
-              <input
-                type='text'
-                id='lastname'
-                value={form.lastname}
-                onChange={e => setForm({ ...form, lastname: e.target.value })}
               />
             </p>
             <p>
