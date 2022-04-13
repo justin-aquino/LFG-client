@@ -1,7 +1,14 @@
-export default function Main() {
+import Parties from "./pages/Parties/Parties";
+
+export default function Main(currentGame, setCurrentGame) {        
     return (
-<>
-Landing Page
-</>
-    )
+        <>
+        <div className="navbar-party">
+        <h1>
+            {currentGame.currentGame.name}
+        </h1>
+        <Parties currentGame={currentGame.currentGame} setCurrentGame={setCurrentGame} />
+        </div>        
+        </>
+    )    
 }

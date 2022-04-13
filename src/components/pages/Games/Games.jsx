@@ -1,27 +1,28 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-export default function Games ({games,setGames,currentGame,setCurrentGame}) {
+export default function Games ({games, setGames, currentGame, setCurrentGame}) {
   const gamesMap = games.map((element, idx) => {
     return (
-      <div style={{ backgroundColor: '#151414' }}>
-        <span onClick={() => handleGameSelect(element)}>
-          <img
-            width='75'
+      <div>        
+        <Link to='' onClick={() => handleGameSelect(element)} alt='image' >
+          <img            
             key={`game-icon-${idx}`}
             src={element.icon}
             alt={element.name}
+            className='img-icon'
           />
-        </span>
+        </Link>
       </div>
     )
   })
 
   const handleGameSelect = game => {
     setCurrentGame(game)
+    // console.table(game)
   }
   return (
-    <div>
-      <h1>Games</h1>
+    <div>      
       {gamesMap}
     </div>
   )
