@@ -2,7 +2,7 @@ import Requests from './Requests';
 import Members from './Members';
 
 function Party({ currentParty }) {
-
+console.log(currentParty)
   return (
     <>
     <div className="party-container">
