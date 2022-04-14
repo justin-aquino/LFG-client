@@ -245,6 +245,19 @@ main {
   padding: 20px 40px 20px 40px;
   border-radius: 20px;
 }
+.party-forms-card {
+  position: inherit;
+  /* top: 50%;
+  left: 30%;
+  transform: translate(0, -50%);     */
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: row;
+  background-color: var(--amber);
+  padding: 20px 40px 20px 40px;  
+  /* border-radius: 20px; */
+}
 input, textarea, label {
   border: 0.05rem solid var(--amber);
   color: rgb(0, 0, 0);  

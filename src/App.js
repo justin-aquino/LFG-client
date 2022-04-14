@@ -98,7 +98,7 @@ function App() {
           />          
           <Route
               path="/party"
-              element={<CreateParty currentGame={currentGame} />}
+              element={<CreateParty currentGame={currentGame} currentUser={currentUser} />}
             />
         </Routes>
         </Layout>
