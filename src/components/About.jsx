@@ -2,12 +2,11 @@ import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 export default function About({ currentGame, setCurrentGame }) {
   return (
-    <div className='about-page'>
-      <div className="about-main-title">
-        <h1>Meet the devs</h1>
-      </div>
-      <main className="about-cards about-team-title">
-        <article className="about-card">
+    <>
+    {/* start flex container */}
+    <div className='header-on-dark'><h1>Meet the devs</h1></div>
+    <div className='flex-container App'>      
+        <article>
           <img src="#" alt="Jamel" />
           <div className="text">
             <h3>Jamel Scott Fadel</h3>
@@ -25,9 +24,9 @@ export default function About({ currentGame, setCurrentGame }) {
             <a href="https://www.linkedin.com/in/jamelfadel/" target="_blank" rel="noreferrer">
               <FaLinkedin size={30} />
             </a>
-          </div>
+          </div>  
         </article>
-        <article className="about-card">
+        <article>
           <img src="#" alt="Jon" />
           <div className="text">
             <h3>Jon Dimaculangan</h3>
@@ -46,7 +45,9 @@ export default function About({ currentGame, setCurrentGame }) {
             </a>
           </div>
         </article>
-        <article className="about-card">
+        
+        
+        <article>
           <img src="#" alt="Justin" />
           <div className="text">
             <h3>Justin Aquino</h3>
@@ -65,7 +66,7 @@ export default function About({ currentGame, setCurrentGame }) {
             </a>
           </div>
         </article>
-        <article className="about-card">
+        <article>
           <img src="#" alt="Norman" />
           <div className="text">
             <h3>Norman Teodoro</h3>
@@ -83,8 +84,9 @@ export default function About({ currentGame, setCurrentGame }) {
               <FaLinkedin size={30} />
             </a>
           </div>
-        </article>
-      </main>
+        </article>      
     </div>
+    {/* end flex container */}    
+    </>
   );
 }

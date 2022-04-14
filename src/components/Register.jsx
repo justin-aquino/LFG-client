@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import axios from 'axios'
 import jwt_decode from 'jwt-decode'
-import { Navigate } from 'react-router-dom'
+import { Navigate, Redirect } from 'react-router-dom'
+
 
 export default function Register ({ currentUser, setCurrentUser, setUsers }) {
   const [form, setForm] = useState({
@@ -32,9 +33,8 @@ export default function Register ({ currentUser, setCurrentUser, setUsers }) {
         const decoded = jwt_decode(token)
         // log the user in
         setCurrentUser(decoded)
-        return axios
-          .get(`${process.env.REACT_APP_SERVER_URL}/users`)
-          .then(response => setUsers(response.data))
+        return axios.get(`${process.env.REACT_APP_SERVER_URL}/users`)
+        .then(response => setUsers(response.data))        
       } else {
         setMessage(`Passwords do not match.`)
       }
@@ -48,8 +48,7 @@ export default function Register ({ currentUser, setCurrentUser, setUsers }) {
     }
   }
 
-  if (currentUser) return <Navigate to='/dashboard' />
-
+  if (currentUser) return <Navigate to='/' />
   return (
     <>      
       

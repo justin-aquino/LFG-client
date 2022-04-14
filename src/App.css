@@ -16,23 +16,13 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 main {
   display: flex;
   /* align-items: flex-start;  */
   align-items: stretch;
   /* flex-flow: row wrap; */
   flex-direction: row;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   align-content: flex-start;
   height: 100%;
   padding: 0px;
@@ -45,31 +35,10 @@ main {
   position: fixed;
   left: 140px;
   background-color: var(--blue);
+  /* border: .5rem solid  white; */
+  overflow: auto;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 .navbar-logo{
   background-color: #151414;
   color: var(--white);
@@ -82,6 +51,7 @@ main {
   max-height: 90px;  
   border-bottom: .05rem solid var(--red);
 }
+
 .navbar-logo a {
   /* padding: 6px 8px 6px 16px; */
   text-decoration: none;
@@ -167,7 +137,6 @@ main {
   text-shadow: 0 0 10px var(--amber);
 }
 
-
 /* this is the class for the party div */
 .navbar-party {
   height: 100%;
@@ -225,10 +194,8 @@ main {
   max-width: 40px;  
   margin:10px;  
   opacity: 50%;
-
-  
-
 }
+
 .img-icon-selected {
   max-width: 70px;  
   margin:10px;
@@ -259,26 +226,46 @@ input, textarea, label {
   display: block;    
   text-align: left;
 }
-.about-page{
-  display: flex;
-  background-color: ;
+
+.flex-container {
+  display: flex;    
+  flex-direction: row;
+  flex-grow: inherit;
+  /* border: .1rem dotted white; */
+  width: 90%;
+  justify-content: space-evenly;  
+  flex-wrap: wrap; 
+  align-content: stretch;  
+  height: 100%;
+  padding: 5px;
+  gap: 1px;
 }
-.about-main-title {
-  text-align: center;
-}
-.about-card {
+article{
   flex: 0 0 300px;
-  margin: 10px;
+  /* margin: 10px; */
   border: 1px solid #ccc;
   box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
-  height: 450px;
-  background-color: rgb(224, 224, 224);
+  max-height: 450px;
+  background-color: var(--amber);
+  border-radius: 3px;
+  padding: 5px;
+  max-width: 250px;
+  color: var(--blue);
 }
-
-.about-card img {
+article img {
   max-width: 100%;
 }
-.about-descriptionApp {
+.header-on-dark {
+  padding: 15px;
+  color: var(--white);
+
+}
+.header-on-light {
+  padding: 15px;
+  color: var(--black);
+}
+
+/* .about-descriptionApp {
   font-size: 16px;
   margin: 10px;
 }
@@ -290,4 +277,4 @@ input, textarea, label {
 .about-team-title {
   text-align: center;
   margin: 10px;
-}
+} */
