@@ -1,7 +1,10 @@
 import Requests from './Requests';
 import Members from './Members';
+import { Link } from 'react-router-dom';
+import RequestForm from './RequestForm';
 
-function Party({ currentParty }) {
+function Party({ currentParty, currentUser }) {
+
   return (
     <>
     <div className="party-container">
@@ -10,9 +13,12 @@ function Party({ currentParty }) {
           <h1>{currentParty.partyName} Party</h1>
         </div>
         <div id="post area">
-          <h2> post</h2>
-          <h2> post</h2>
-          <h2> post</h2>
+          <p>
+            {currentParty.description}
+          </p>
+        </div>
+        <div>
+          <Link to=''>Join this party</Link>
         </div>
       </div>
       <div className="part-right">
@@ -20,6 +26,7 @@ function Party({ currentParty }) {
         <Requests currentParty={currentParty}/>
       </div>
     </div>
+    <RequestForm currentParty={currentParty} currentUser={currentUser} />
     </>
   );
 }
