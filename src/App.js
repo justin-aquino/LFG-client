@@ -14,6 +14,7 @@ import Main from './components/Main';
 import Layout from './components/layouts/Layout';
 import Navibar from './components/layouts/Navibar';
 import Party from './components/Party';
+import CreateParty from './components/pages/Parties/CreateParty';
 
 function App() {
   const [currentUser, setCurrentUser] = useState({
@@ -102,8 +103,14 @@ function App() {
             path="/party"
             element={<Party/>}
           />
+          <Route
+              path="/create-party"
+              element={<CreateParty/>}
+            />
         </Routes>
         </Layout>
+
+        
       <Link to="/logout">
         <button onClick={handleLogout}>Logout</button>
       </Link>
