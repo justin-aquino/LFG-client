@@ -1,8 +1,9 @@
 import { useState } from "react";
 import Parties from "./pages/Parties/Parties";
 
-export default function Party({setCurrentParty}){
+export default function PartiesList({setCurrentParty}){
     const [partyList, showPartyList] = useState(true)
+    
     return(
         <>
         

@@ -2,10 +2,10 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-export default function Parties({ currentGame, setCurrentGame}) {
+export default function Parties({ currentGame, setCurrentGame,setCurrentParty}) {
   const [currentParties, setCurrentParties] = useState([]);
 
-  const [currentParty, setCurrentParty] = useState({})
+
   
   useEffect(() => {
     try {

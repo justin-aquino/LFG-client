@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 import Login from "./components/Login"
 import Games from './components/Games';
-import Parties from './components/Party';
+import Parties from './components/PartiesList';
 import Dashboard from './components/pages/Users/Dashboard';
 import Register from "./components/Register"
 import SearchGames from './components/pages/Games/SearchGames';
@@ -13,7 +13,7 @@ import About from './components/About';
 import Main from './components/Main';
 import Layout from './components/layouts/Layout';
 import Navibar from './components/layouts/Navibar';
-import Party from './components/Party';
+import PartiesList from './components/PartiesList';
 
 function App() {
   const [currentUser, setCurrentUser] = useState({
@@ -100,13 +100,13 @@ function App() {
           />
           <Route
             path="/party"
-            element={<Party/>}
+            element={<PartiesList/>}
           />
         </Routes>
         </Layout>
-      <Link to="/logout">
+      {/* <Link to="/logout">
         <button onClick={handleLogout}>Logout</button>
-      </Link>
+      </Link> */}
       </BrowserRouter>
     </div>
   );
