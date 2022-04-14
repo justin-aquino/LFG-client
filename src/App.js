@@ -13,6 +13,7 @@ import Main from './components/Main';
 import Layout from './components/layouts/Layout';
 import Navibar from './components/layouts/Navibar';
 import CreateParty from './components/pages/Parties/CreateParty';
+import RequestForm from './components/pages/Parties/RequestForm';
 
 function App() {
   const [currentUser, setCurrentUser] = useState({
@@ -21,11 +22,11 @@ function App() {
   })
   const [users, setUsers] = useState([])
   const [games, setGames] = useState([])
-  const [currentGame, setCurrentGame] = useState({})  
-  
+  const [currentGame, setCurrentGame] = useState({})
+
   useEffect(() => {
-         axios.get(`${process.env.REACT_APP_SERVER_URL}/game`)
-      .then(res=>{
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/game`)
+      .then(res => {
         console.log(res.data)
         setGames(res.data)
       })
@@ -34,7 +35,7 @@ function App() {
 
   // console.log(currentGame)
 
-  useEffect(() => { 
+  useEffect(() => {
     const token = localStorage.getItem('jwt')
     if (token) {
       setCurrentUser(jwt_decode(token))
@@ -42,65 +43,69 @@ function App() {
       setCurrentUser(null)
     }
     axios.get(`${process.env.REACT_APP_SERVER_URL}/users`)
-    .then(response => {
+      .then(response => {
         setUsers(response.data)
-    })
-    .catch(console.log)
+      })
+      .catch(console.log)
   }, [])
 
   const handleLogout = () => {
     if (localStorage.getItem('jwt')) localStorage.removeItem('jwt')
-    setCurrentUser(null)    
+    setCurrentUser(null)
   }
 
 
   return (
     <div className="App">
       <BrowserRouter>
-      <Navibar games={games} setGames={setGames} currentGame={currentGame} setCurrentGame={setCurrentGame} currentUser={currentUser} setCurrentUser={setCurrentUser} />
-       <Layout>
-        <Routes>
-        <Route 
-            path='/'
-            element={<Main currentGame={currentGame} setCurrentGame={setCurrentGame} />}
-          />
-          {/* <Route 
+        <Navibar games={games} setGames={setGames} currentGame={currentGame} setCurrentGame={setCurrentGame} currentUser={currentUser} setCurrentUser={setCurrentUser} />
+        <Layout>
+          <Routes>
+            <Route
+              path='/'
+              element={<Main currentGame={currentGame} setCurrentGame={setCurrentGame} />}
+            />
+            {/* <Route 
             path='/games'
             element={<Games games={games} setGames={setGames} />}
           /> */}
-          <Route 
-            path='/games'
-            element={<Games />}
-          />
-          <Route 
-            path='/games/browse'
-            element={<SearchGames />}
-          />
-          {/* <Route 
+            <Route
+              path='/games'
+              element={<Games />}
+            />
+            <Route
+              path='/games/browse'
+              element={<SearchGames />}
+            />
+            {/* <Route 
             path='/game/party'
             element={<Parties />}
           /> */}
-          <Route 
-            path='/dashboard'
-            element={<Dashboard />}
-          />
-          <Route
-            path="/login"
-            element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser}/>}
-          />
-          <Route
-            path="/signup"
-            element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} setUsers={setUsers}/>}
-          />
-          <Route
-            path="/about"
-            element={<About currentGame={currentGame} setCurrentGame={setCurrentGame} />}
-          />          
-          <Route
+            <Route
+              path='/dashboard'
+              element={<Dashboard />}
+            />
+            <Route
+              path="/login"
+              element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser} />}
+            />
+            <Route
+              path="/signup"
+              element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} setUsers={setUsers} />}
+            />
+            <Route
+              path="/about"
+              element={<About currentGame={currentGame} setCurrentGame={setCurrentGame} />}
+            />
+            <Route
               path="/party"
               element={<CreateParty currentGame={currentGame} currentUser={currentUser} />}
             />
-        </Routes>
+            <Route
+              path="/request"
+              element={<RequestForm currentUser={currentUser} />}
+            />
+          </Routes>
         </Layout>
       </BrowserRouter>
     </div>
