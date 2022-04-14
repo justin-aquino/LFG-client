@@ -1,7 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export default function Games ({games, setGames, currentGame, setCurrentGame}) {
+export default function Games ({currentParty, setCurrentParty, games, setGames, currentGame, setCurrentGame}) {
+
+  console.log(currentParty)
+
   const gamesMap = games.map((element, idx) => {
     return (
       <div key={`game-id-${idx}`}>   
@@ -19,6 +22,7 @@ export default function Games ({games, setGames, currentGame, setCurrentGame}) {
 
   const handleGameSelect = game => {
     setCurrentGame(game)
+    setCurrentParty(null)
   }
   return (
     <div style={{display: "flex", flexDirection:"column", justifyContent:"center"}}>      
