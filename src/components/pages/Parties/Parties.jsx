@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-export default function Parties({ currentGame, setCurrentGame, setCurrentParty}) {
+export default function Parties({ currentGame, setCurrentGame, setCurrentParty, setShowCreateParty}) {
   const [currentParties, setCurrentParties] = useState([]);
   
   useEffect(() => {
@@ -10,38 +10,39 @@ export default function Parties({ currentGame, setCurrentGame, setCurrentParty})
       axios.get(`${process.env.REACT_APP_SERVER_URL}/party/${currentGame._id}`)
         .then((res) => {          
           setCurrentParties(res.data);
-        });
-      // axios.get(`${process.env.REACT_APP_SERVER_URL}/party/625856bd76cfcc732695c0bf`) //this is tempporary for now
-      //   .then((res) => {          
-      //     setCurrentParties(res.data);
-      //   });
+        });      
     } catch (err) {
       console.log(err);
     }
   }, [currentGame]);
   
   const handlePartySelect = party => {
+    setShowCreateParty(false)
     setCurrentParty(party)
+  }
+  const handleCreateParty =  currentGame => {
+    setShowCreateParty(true)
   }
   const listParties = currentParties.map((element, idx) => {
 
     return (
-      <div onClick={() => handlePartySelect(element)} key={`${element.name}-part-${idx}`}>
-        <Link to=''>{element.partyName}</Link>
+      <div>
+        <Link to='' onClick={() => handlePartySelect(element)} key={`${element.name}-part-${idx}`}>{element.partyName}</Link>
       </div>
     );
   });
 
-  return <>
-  <div className='header-on-dark'><h1>{currentGame.name}</h1></div>
-  <fieldset>
-  <legend><h2>Parties</h2></legend>
-  {listParties}
-  </fieldset>
+  return(
+  <>
+    <div className='header-on-dark'><h1>{currentGame.name}</h1></div>
+    <fieldset>
+    <legend><h2>Parties</h2></legend>
+    {listParties}
+    </fieldset>
+    <div className='navbar-party-footer'>
+    <p><Link to='' onClick={() => handleCreateParty(currentGame)}>Create a party</Link></p>
+    </div>  
+  </>  
   
-  <div className='navbar-party-footer'>
-    <p><Link to='/party'>Create a party</Link></p>
-  </div>
-    
-  </>;
+  ) 
 }
