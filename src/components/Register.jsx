@@ -52,11 +52,10 @@ export default function Register ({ currentUser, setCurrentUser, setUsers }) {
 
   return (
     <>      
-      <div className='flex-container'>
-        <h3>Register An Account</h3>
-      </div>
-      <div className='flex-container'>
-        <div className='form-container'>
+      
+      <div className='user-forms-card'>
+      <h1>Register An Account</h1>
+        
           <form onSubmit={handleSubmit}>
             <p>
               <label htmlFor='username'>Username:</label>
@@ -100,7 +99,7 @@ export default function Register ({ currentUser, setCurrentUser, setUsers }) {
           </form>
           <p className='error-message'>{message ? `${message}` : ''}</p>
         </div>
-      </div>
+
     </>
   )
 }
