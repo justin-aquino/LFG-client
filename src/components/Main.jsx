@@ -2,7 +2,7 @@ import Parties from './pages/Parties/Parties';
 import Party from './pages/Parties/Party';
 import { useState } from 'react';
 
-export default function Main({currentParty, setCurrentParty, currentGame, setCurrentGame}) {
+export default function Main({currentParty, setCurrentParty, currentGame, setCurrentGame, currentUser}) {
     // const [currentParty, setCurrentParty] = useState(null)
   return (
     <>
@@ -12,12 +12,12 @@ export default function Main({currentParty, setCurrentParty, currentGame, setCur
             currentParty={currentParty}
             setCurrentParty={setCurrentParty}
             currentGame={currentGame}
-            setCurrentGame={setCurrentGame}
+            setCurrentGame={setCurrentGame}            
           />
         </div>
       ) : null}
       <div>
-        {currentParty ? <Party currentParty={currentParty}/> : null }
+        {currentParty ? <Party currentParty={currentParty} currentUser={currentUser}/> : null }
       </div>
       
     </>
