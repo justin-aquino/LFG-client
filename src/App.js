@@ -12,7 +12,7 @@ import About from './components/About';
 import Main from './components/Main';
 import Layout from './components/layouts/Layout';
 import Navibar from './components/layouts/Navibar';
-import PartiesList from './components/PartiesList';
+import PartiesList from './components/_PartiesList';
 import CreateParty from './components/pages/Parties/CreateParty';
 
 function App() {
@@ -104,7 +104,7 @@ function App() {
           />
           <Route
               path="/create-party"
-              element={<CreateParty currentGame={currentGame} partyList={partyList} setPartyList={setPartyList}/>}
+              element={<CreateParty currentGame={currentGame} />}
             />
         </Routes>
         </Layout>
