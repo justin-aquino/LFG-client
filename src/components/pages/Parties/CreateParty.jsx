@@ -33,9 +33,17 @@ export default function CreateParty ({currentGame, partyList, setPartyList}) {
     return (
       
         <div className='user-forms-card'>
-        <h1>Create a Party!</h1>
-          
+        <h1>Create a Party!</h1>          
             <form onSubmit={handleSubmit}>
+            <p>
+                <label htmlFor='username'>Game : </label>
+                <input
+                  type='text'
+                  id='gameId'
+                  value={currentGame.name}
+                  disabled
+                />
+              </p>
               <p>
                 <label htmlFor='username'>Game Id: </label>
                 <input
@@ -43,6 +51,7 @@ export default function CreateParty ({currentGame, partyList, setPartyList}) {
                   id='gameId'
                   value={form.gameId}
                   onChange={e => setForm({ ...form, gameId: e.target.value })}
+                  disabled
                 />
               </p>
               <p>

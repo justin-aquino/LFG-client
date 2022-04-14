@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import axios from 'axios'
 import jwt_decode from 'jwt-decode'
-import { Navigate, Redirect } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 
 
 export default function Register ({ currentUser, setCurrentUser, setUsers }) {
@@ -48,8 +48,8 @@ export default function Register ({ currentUser, setCurrentUser, setUsers }) {
 
   if (currentUser) return <Navigate to='/' />
   return (
-    <>      
-      
+    <>            
+    <div className='flex-container'>
       <div className='user-forms-card'>
       <h1>Register An Account</h1>
         
@@ -96,7 +96,7 @@ export default function Register ({ currentUser, setCurrentUser, setUsers }) {
           </form>
           <p className='error-message'>{message ? `${message}` : ''}</p>
         </div>
-
+        </div>
     </>
   )
 }

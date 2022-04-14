@@ -12,7 +12,6 @@ import About from './components/About';
 import Main from './components/Main';
 import Layout from './components/layouts/Layout';
 import Navibar from './components/layouts/Navibar';
-import PartiesList from './components/PartiesList';
 import CreateParty from './components/pages/Parties/CreateParty';
 
 function App() {
@@ -22,8 +21,7 @@ function App() {
   })
   const [users, setUsers] = useState([])
   const [games, setGames] = useState([])
-  const [currentGame, setCurrentGame] = useState({})
-  // const [partyList, setPartyList] = useState([])
+  const [currentGame, setCurrentGame] = useState({})  
   
   useEffect(() => {
          axios.get(`${process.env.REACT_APP_SERVER_URL}/game`)
@@ -97,14 +95,10 @@ function App() {
           <Route
             path="/about"
             element={<About currentGame={currentGame} setCurrentGame={setCurrentGame} />}
-          />
+          />          
           <Route
-            path="/party"
-            element={<PartiesList/>}
-          />
-          <Route
-              path="/create-party"
-              element={<CreateParty currentGame={currentGame} partyList={partyList} setPartyList={setPartyList}/>}
+              path="/party"
+              element={<CreateParty currentGame={currentGame} />}
             />
         </Routes>
         </Layout>
