@@ -2,15 +2,16 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 
 
-export default function CreateParty ({currentGame, partyList, setPartyList}) {
-    const [form, setForm] = useState({
-        gameId: "625856bd76cfcc732695c0bf",
-        userId: "6257c3b5c447bf9be2d7b801",
+export default function CreateParty ({currentGame, partyList, setPartyList, currentUser}) {
+  
+  const [form, setForm] = useState({
+        gameId: currentGame._id,
+        userId: currentUser.id,
         partyName: "",
         description: "",
         members: [
           {
-            userId: "6257c3b5c447bf9be2d7b801",
+            userId: currentUser.id,
             admin: "true"
           }
         ],
@@ -22,8 +23,7 @@ export default function CreateParty ({currentGame, partyList, setPartyList}) {
     const handleSubmit = async (e) => {
         e.preventDefault()
         // console.log(e.target.value)
-       await axios
-          .post(`${process.env.REACT_APP_SERVER_URL}/party/${form.gameId}`, form)
+       await axios.post(`${process.env.REACT_APP_SERVER_URL}/party/${form.gameId}`, form)
           .then(response => {
             console.log(response.data)
             setPartyList([...partyList, form])
@@ -32,7 +32,7 @@ export default function CreateParty ({currentGame, partyList, setPartyList}) {
     
     return (
       
-        <div className='user-forms-card'>
+        <div className='party-forms-card'>
         <h1>Create a Party!</h1>          
             <form onSubmit={handleSubmit}>
             <p>
@@ -55,12 +55,12 @@ export default function CreateParty ({currentGame, partyList, setPartyList}) {
                 />
               </p>
               <p>
-                <label htmlFor='username'>User Id: </label>
+                <label htmlFor='username'>User : </label>
                 <input
                   type='text'
                   id='gameId'
-                  value={form.userId}
-                  onChange={e => setForm({ ...form, userId: e.target.value })}
+                  value={currentUser.username}
+                  disabled
                 />
               </p>
               <p>
