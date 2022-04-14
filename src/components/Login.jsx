@@ -42,7 +42,7 @@ export default function Login({ currentUser, setCurrentUser }) {
   }
 
   // navigate to the user's profile if currentUser is NOT null
-  if (currentUser) return <Navigate to="/dashboard" />
+  if (currentUser) return <Navigate to="/" />
   return (
        <div className="user-forms-card">
           <h1>Sign In</h1>
@@ -79,6 +79,7 @@ export default function Login({ currentUser, setCurrentUser }) {
             </a>
           </p>
         </form>
+        <p className="error-message">{msg ? `${msg}` : ''}</p>
       </div>    
   )
 }
