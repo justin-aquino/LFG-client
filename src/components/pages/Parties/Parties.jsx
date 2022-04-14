@@ -17,15 +17,15 @@ export default function Parties({ currentGame, setCurrentGame }) {
   }, [currentGame]);
 
   const listParties = currentParties.map((element, idx) => {
-    return (
-      <div key={`${element.name}-part-${idx}`}>
-        <Link to=''>{element.partyName}</Link>
-      </div>
+    return (      
+        <Link to='' key={`${element.name}-part-${idx}`}> &gt; {element.partyName}</Link>      
     );
   });
 
   return <>
-  <h2>{currentGame.name}</h2>
+  <h1>{currentGame.name}</h1>
+  <h2>Parties available</h2>
   {listParties}
+  
   </>;
 }

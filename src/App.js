@@ -52,7 +52,6 @@ function App() {
 
   const handleLogout = () => {
     if (localStorage.getItem('jwt')) localStorage.removeItem('jwt')
-
     setCurrentUser(null)    
   }
 
@@ -60,7 +59,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      <Navibar games={games} setGames={setGames} currentGame={currentGame} setCurrentGame={setCurrentGame} />
+      <Navibar games={games} setGames={setGames} currentGame={currentGame} setCurrentGame={setCurrentGame} currentUser={currentUser} setCurrentUser={setCurrentUser} />
        <Layout>
         <Routes>
         <Route 
@@ -105,7 +104,7 @@ function App() {
           />
         </Routes>
         </Layout>
-      <Link to="/login">
+      <Link to="/logout">
         <button onClick={handleLogout}>Logout</button>
       </Link>
       </BrowserRouter>
