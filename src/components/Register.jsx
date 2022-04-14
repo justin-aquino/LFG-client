@@ -6,8 +6,6 @@ import { Navigate } from 'react-router-dom'
 export default function Register ({ currentUser, setCurrentUser, setUsers }) {
   const [form, setForm] = useState({
     username: '',
-    firstname: '',
-    lastname: '',
     email: '',
     password: ''
     // manager: false
