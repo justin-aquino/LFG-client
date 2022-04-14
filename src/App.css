@@ -1,31 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+:root{
+  --black:#201E1E;
+  --red: #D90429;
+  --blue: #1D3557;
+  --amber: #FFBF00;
+  --emerald: #32936F;
+  --white:#f0f8ff; 
+}
 * {
   font-family: 'Bebas Neue', cursive;
   font-weight: 400;  
-  box-sizing: border-box;      
+  box-sizing: border-box;        
 }
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 main {
   display: flex;
   /* align-items: flex-start;  */
   /* align-items: stretch; */
   /* flex-flow: row wrap; */
   flex-direction: row;
-  /* flex-wrap: nowrap; */
-  /* align-content: flex-start; */
+  flex-wrap: wrap;
+  align-content: flex-start;
   height: 100%;
   padding: 0px;
   gap: 0px;
@@ -36,35 +34,14 @@ main {
   margin-right: 0px;  
   position: fixed;
   left: 140px;
-  background-color: #616c7c;
+  background-color: var(--blue);
+  /* border: .5rem solid  white; */
+  overflow: auto;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 .navbar-logo{
   background-color: #151414;
-  color: #FFF;
+  color: var(--white);
   width: 140px;
   margin-top: 0;
   padding: 0 10px 0px 5px;
@@ -72,15 +49,24 @@ main {
   top: 0;
   min-height: 90px;  
   max-height: 90px;  
-  border-bottom: .05rem solid #D90429;
+  border-bottom: .05rem solid var(--red);
+}
+
+.navbar-logo a {
+  /* padding: 6px 8px 6px 16px; */
+  text-decoration: none;
+  font-size: 18px;
+  color: var(--white);
+  display: block;  
+  font-size: 18px;    
 }
 .navbar-footer{
   background-color: #151414;
-  color: #FFF;
+  color: var(--white);
   width: 140px;
   font-size: 18px;
   margin-bottom: 0;
-  border-top: .05rem solid #D90429;
+  border-top: .05rem solid var(--red);
   padding: 0 10px 0 5px;  
   position: fixed;
   bottom: 0;
@@ -91,20 +77,20 @@ main {
   align-items:center;
 }
 .navbar-logo{
-  border-bottom: .05rem solid #D90429;
+  border-bottom: .05rem solid var(--red);
 }
 
 .navbar-footer a {
   /* padding: 6px 8px 6px 16px; */
   text-decoration: none;
   font-size: 18px;
-  color: #FFF;
+  color: var(--white);
   display: block;  
   font-size: 18px;    
 }
 .navbar-footer a:hover {  
   /* border-left: 10px solid rgb(248, 137, 33); */
-  text-shadow: 0 0 10px #ffbf00;
+  text-shadow: 0 0 10px var(--amber);
 }
 
 .navbar-main {
@@ -121,7 +107,7 @@ main {
   padding: 0 10px 0 15px;
   font-weight: 400;
   font-size: 16px;
-  color: #FFF;  
+  color: var(--white);  
   margin-bottom: 240px;  
   display: flex;
   flex-direction: column;
@@ -139,7 +125,7 @@ main {
   /* padding: 6px 8px 6px 16px; */
   text-decoration: none;
   font-size: 25px;
-  color: #FFF;
+  color: var(--white);
   display: block;
   font-weight: 400;
   font-size: 20px;
@@ -148,7 +134,7 @@ main {
 }
 .navbar-main a:hover {  
   /* border-left: 10px solid rgb(248, 137, 33); */
-  text-shadow: 0 0 10px #ffbf00;
+  text-shadow: 0 0 10px var(--amber);
 }
 
 /* this is the class for the party div */
@@ -160,18 +146,19 @@ main {
   z-index: 0;
   top: 60px;  
   left: 0;
-  background-color: #201E1E;
+  background-color: var(--black);
   overflow-x: hidden;  
   padding: 10px 10px 10px 10px;  
   margin-left: 0px;    
-  color: #FFF;
+  color: var(--white);
   border-right: 0.05rem solid gray;
   padding-bottom: 600px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: flex-start;  
 }
+
 .navbar-party::-webkit-scrollbar {
   display: none;
 }
@@ -183,7 +170,7 @@ main {
   /* padding: 6px 8px 6px 16px; */
   text-decoration: none;
   font-size: 25px;
-  color: #FFF;
+  color: var(--white);
   display: block;
   font-weight: 400;
   font-size: 20px;
@@ -191,30 +178,28 @@ main {
 }
 .navbar-party a:hover {  
   /* border-left: 10px solid rgb(248, 137, 33); */
-  text-shadow: 0 0 10px #ffbf00;
+  text-shadow: 0 0 10px var(--amber);
 }
 
 .container-main {
- color: #1D3557;
+ color: var(--blue);
  padding: 0 0 0 10px;
 }
 
 .party-selected{
-  text-shadow: 0 0 10px #ffbf00;
+  text-shadow: 0 0 10px var(--amber);
 }
 
 .img-icon {
   max-width: 40px;  
   margin:10px;  
   opacity: 50%;
-
-  
-
 }
+
 .img-icon-selected {
   max-width: 70px;  
   margin:10px;
-  /* box-shadow: 0 0 10px #ffbf00;; */
+  /* box-shadow: 0 0 10px var(--amber);; */
 }
 
 .user-forms-card {
@@ -226,9 +211,12 @@ main {
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: column;
+  background-color: var(--amber);
+  padding: 20px 40px 20px 40px;
+  border-radius: 20px;
 }
 input, textarea, label {
-  border: 0.05rem solid #FFBF00;
+  border: 0.05rem solid var(--amber);
   color: rgb(0, 0, 0);  
   padding: 5px;
   border-radius: 2px;
@@ -238,25 +226,44 @@ input, textarea, label {
   display: block;    
   text-align: left;
 }
-/* .about-page{
 
-} */
-.about-main-title {
-  text-align: center;
+.flex-container {
+  display: flex;    
+  flex-direction: row;
+  flex-grow: inherit;
+  /* border: .1rem dotted white; */
+  width: 90%;
+  justify-content: space-evenly;  
+  flex-wrap: wrap; 
+  align-content: stretch;  
+  height: 100%;
+  padding: 5px;
+  gap: 1px;
 }
-.about-card {
+article{
   flex: 0 0 300px;
-  margin: 10px;
+  /* margin: 10px; */
   border: 1px solid #ccc;
   box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
-  height: 450px;
-  background-color: rgb(224, 224, 224);
+  max-height: 450px;
+  background-color: var(--amber);
+  border-radius: 3px;
+  padding: 5px;
+  max-width: 250px;
+  color: var(--blue);
 }
-
-.about-card img {
+article img {
   max-width: 100%;
 }
-.about-descriptionApp {
+.header-on-dark {
+  padding: 15px;
+  color: var(--white);
+}
+.header-on-light {
+  padding: 15px;
+  color: var(--black);
+}
+/* .about-descriptionApp {
   font-size: 16px;
   margin: 10px;
 }
@@ -268,7 +275,7 @@ input, textarea, label {
 .about-team-title {
   text-align: center;
   margin: 10px;
-}
+} */
 .party-container{
   display: flex;
   flex-direction: row;

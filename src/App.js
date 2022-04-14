@@ -12,9 +12,8 @@ import About from './components/About';
 import Main from './components/Main';
 import Layout from './components/layouts/Layout';
 import Navibar from './components/layouts/Navibar';
-import CreateParty from './components/pages/Parties/CreateParty';
 import PartiesList from './components/PartiesList';
-
+import CreateParty from './components/pages/Parties/CreateParty';
 
 function App() {
   const [currentUser, setCurrentUser] = useState({
