@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-export default function Parties({ currentGame, setCurrentGame, setCurrentParty, setShowCreateParty}) {
+export default function Parties({ currentGame, setCurrentGame, setCurrentParty}) {
   const [currentParties, setCurrentParties] = useState([]);
   
   useEffect(() => {
@@ -15,14 +15,10 @@ export default function Parties({ currentGame, setCurrentGame, setCurrentParty, 
       console.log(err);
     }
   }, [currentGame]);
-  
-  const handlePartySelect = party => {
-    setShowCreateParty(false)
+  const handlePartySelect = party => {  
     setCurrentParty(party)
   }
-  const handleCreateParty =  currentGame => {
-    setShowCreateParty(true)
-  }
+  
   const listParties = currentParties.map((element, idx) => {
 
     return (
@@ -40,7 +36,7 @@ export default function Parties({ currentGame, setCurrentGame, setCurrentParty, 
     {listParties}
     </fieldset>
     <div className='navbar-party-footer'>
-    <p><Link to='' onClick={() => handleCreateParty(currentGame)}>Create a party</Link></p>
+    <p><Link to='/party'>Create a party</Link></p>
     </div>  
   </>  
   

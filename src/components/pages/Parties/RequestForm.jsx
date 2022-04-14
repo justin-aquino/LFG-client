@@ -36,7 +36,7 @@ export default function RequestForm({ currrentParty, currentUser }) {
 
     return (
         <>
-            <div className='user-forms-card'>
+            <div className='party-forms-card'>
                 {/* <h1>Request to join {currrentParty.partyName}</h1> */}
                 <h1>Request to join</h1>
 
