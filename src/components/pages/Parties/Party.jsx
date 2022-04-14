@@ -16,7 +16,7 @@ function Party({ currentParty }) {
       </div>
       <div className="part-right">
         <Members currentParty={currentParty}/>
-        <Requests />
+        <Requests currentParty={currentParty}/>
       </div>
     </div>
   );

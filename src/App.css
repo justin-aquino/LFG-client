@@ -17,19 +17,15 @@
 }
 
 main {
-  display: flex;
-  /* align-items: flex-start;  */
-  /* align-items: stretch; */
-  /* flex-flow: row wrap; */
+  display: flex;  
   flex-direction: row;
   flex-wrap: wrap;
   align-content: flex-start;
   height: 100%;
   padding: 0px;
   gap: 0px;
-  /* justify-content: flex-start; */
-  min-width: 400px;
-  /* width: 100%; */
+  justify-content: flex-start;  
+  width: 100%;
   margin-left: 0px;
   margin-right: 0px;  
   position: fixed;
