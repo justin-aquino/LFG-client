@@ -92,7 +92,7 @@ function App() {
           />
           <Route
             path="/signup"
-            element={<Register />}
+            element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} setUsers={setUsers}/>}
           />
           <Route
             path="/about"
