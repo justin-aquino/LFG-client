@@ -36,7 +36,7 @@ main {
   margin-right: 0;  
   position: fixed;
   left: 140px;
-  background-color: #FFBF00;
+  background-color: #1D3557;
 }
 
 .App-header {
@@ -89,6 +89,9 @@ main {
   flex-direction: column;
   justify-content:flex-start;
   align-items:center;
+}
+.navbar-logo{
+  border-bottom: .05rem solid #D90429;
 }
 
 .navbar-footer a {
@@ -205,13 +208,17 @@ main {
 .img-icon {
   max-width: 40px;  
   margin:10px;  
-  opacity: .3;
+  opacity: 50%;
+
+  
+
 }
 .img-icon-selected {
   max-width: 70px;  
   margin:10px;
   /* box-shadow: 0 0 10px #ffbf00;; */
 }
+
 .user-forms-card {
   position: absolute;
   top: 50%;
@@ -232,4 +239,35 @@ input, textarea, label {
   resize: none;  
   display: block;    
   text-align: left;
+}
+/* .about-page{
+
+} */
+.about-main-title {
+  text-align: center;
+}
+.about-card {
+  flex: 0 0 300px;
+  margin: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+  height: 450px;
+  background-color: rgb(224, 224, 224);
+}
+
+.about-card img {
+  max-width: 100%;
+}
+.about-descriptionApp {
+  font-size: 16px;
+  margin: 10px;
+}
+.about-timeDevel {
+  font-weight: 900;
+  margin: 5px;
+  font-size: 24px;
+}
+.about-team-title {
+  text-align: center;
+  margin: 10px;
 }

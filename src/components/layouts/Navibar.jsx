@@ -8,10 +8,10 @@ export default function Navibar ({ games, setGames, currentGame, setCurrentGame,
 
   return (
     <>
-      <div className='navbar-logo'>
+      <div className='navbar-logo' >
         <h1>LFG</h1>
       </div>
-      <div className='navbar-main'>        
+      <div className='navbar-main' >        
         <Games games={games} setGames={setGames}  currentGame={currentGame} setCurrentGame={setCurrentGame}/>
       </div>
 

@@ -2,8 +2,10 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-export default function Parties({ currentGame, setCurrentGame }) {
+export default function Parties({ currentGame, setCurrentGame}) {
   const [currentParties, setCurrentParties] = useState([]);
+
+  const [currentParty, setCurrentParty] = useState({})
   
   useEffect(() => {
     try {
@@ -15,10 +17,16 @@ export default function Parties({ currentGame, setCurrentGame }) {
       console.log(err);
     }
   }, [currentGame]);
-
+  
+  const handlePartySelect = party => {
+    setCurrentParty(party)
+  }
   const listParties = currentParties.map((element, idx) => {
-    return (      
-        <Link to='' key={`${element.name}-part-${idx}`}> &gt; {element.partyName}</Link>      
+
+    return (
+      <div onClick={() => handlePartySelect(element)} key={`${element.name}-part-${idx}`}>
+        <Link to=''>{element.partyName}</Link>
+      </div>
     );
   });
 

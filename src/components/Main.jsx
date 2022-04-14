@@ -1,6 +1,9 @@
 import Parties from "./pages/Parties/Parties";
 
-export default function Main(currentGame, setCurrentGame) {    
+export default function Main(currentGame, setCurrentGame) {  
+    
+    
+
     return (
         <>
         {currentGame.currentGame.name ?
@@ -10,7 +13,6 @@ export default function Main(currentGame, setCurrentGame) {
         :
         null
         }  
-        <div className="container-main"><Parties currentGame={currentGame.currentGame} setCurrentGame={setCurrentGame} /></div>      
         </>
     )    
 }
