@@ -1,6 +1,8 @@
 import Parties from "./pages/Parties/Parties";
 
 export default function Main(currentGame, setCurrentGame) {    
+
+    console.log(currentGame)
     return (
         <>
         {currentGame.currentGame.name ?
