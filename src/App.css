@@ -36,7 +36,7 @@ main {
   margin-right: 0;  
   position: fixed;
   left: 140px;
-  background-color: #FFBF00;
+  background-color: #1D3557;
 }
 
 .App-header {
@@ -250,6 +250,7 @@ input, textarea, label {
   border: 1px solid #ccc;
   box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
   height: 450px;
+  background-color: rgb(224, 224, 224);
 }
 
 .about-card img {
