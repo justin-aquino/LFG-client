@@ -22,6 +22,7 @@ function App() {
   const [users, setUsers] = useState([])
   const [games, setGames] = useState([])
   const [currentGame, setCurrentGame] = useState({})  
+  const [currentParty, setCurrentParty] = useState(null)
   
   useEffect(() => {
          axios.get(`${process.env.REACT_APP_SERVER_URL}/game`)
@@ -57,12 +58,12 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      <Navibar games={games} setGames={setGames} currentGame={currentGame} setCurrentGame={setCurrentGame} currentUser={currentUser} setCurrentUser={setCurrentUser} />
+      <Navibar currentParty={currentParty} setCurrentParty={setCurrentParty} games={games} setGames={setGames} currentGame={currentGame} setCurrentGame={setCurrentGame} currentUser={currentUser} setCurrentUser={setCurrentUser} />
        <Layout>
         <Routes>
         <Route 
             path='/'
-            element={<Main currentGame={currentGame} setCurrentGame={setCurrentGame} />}
+            element={<Main currentParty={currentParty} setCurrentParty={setCurrentParty} currentGame={currentGame} setCurrentGame={setCurrentGame} />}
           />
           {/* <Route 
             path='/games'
