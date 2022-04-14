@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import axios from 'axios'
 import jwt_decode from 'jwt-decode'
-import { Navigate } from 'react-router-dom'
+import { Navigate, Redirect } from 'react-router-dom'
+
 
 export default function Register ({ currentUser, setCurrentUser, setUsers }) {
   const [form, setForm] = useState({
@@ -30,9 +31,8 @@ export default function Register ({ currentUser, setCurrentUser, setUsers }) {
         const decoded = jwt_decode(token)
         // log the user in
         setCurrentUser(decoded)
-        return axios
-          .get(`${process.env.REACT_APP_SERVER_URL}/users`)
-          .then(response => setUsers(response.data))
+        return axios.get(`${process.env.REACT_APP_SERVER_URL}/users`)
+        .then(response => setUsers(response.data))        
       } else {
         setMessage(`Passwords do not match.`)
       }
@@ -46,8 +46,7 @@ export default function Register ({ currentUser, setCurrentUser, setUsers }) {
     }
   }
 
-  if (currentUser) return <Navigate to='/dashboard' />
-
+  if (currentUser) return <Navigate to='/' />
   return (
     <>      
       
@@ -55,7 +54,7 @@ export default function Register ({ currentUser, setCurrentUser, setUsers }) {
       <h1>Register An Account</h1>
         
           <form onSubmit={handleSubmit}>
-            <p>
+            <div>
               <label htmlFor='username'>Username:</label>
               <input
                 type='text'
@@ -63,8 +62,8 @@ export default function Register ({ currentUser, setCurrentUser, setUsers }) {
                 value={form.username}
                 onChange={e => setForm({ ...form, username: e.target.value })}
               />
-            </p>
-            <p>
+            </div>
+            <div>
               <label htmlFor='email'>Email:</label>
               <input
                 type='email'
@@ -73,8 +72,8 @@ export default function Register ({ currentUser, setCurrentUser, setUsers }) {
                 onChange={e => setForm({ ...form, email: e.target.value })}
                 // placeholder='enter your email...'
               />
-            </p>
-            <p>
+            </div>
+            <div>
               <label htmlFor='password'>Password:</label>
               <input
                 type='password'
@@ -83,8 +82,8 @@ export default function Register ({ currentUser, setCurrentUser, setUsers }) {
                 onChange={e => setForm({ ...form, password: e.target.value })}
                 // placeholder='enter your password...'
               />
-            </p>
-            <p>
+            </div>
+            <div>
               <label htmlFor='confirmpassword'>Confirm Password:</label>
               <input
                 type='password'
@@ -92,7 +91,7 @@ export default function Register ({ currentUser, setCurrentUser, setUsers }) {
                 value={passwordCheck}
                 onChange={e => setPasswordCheck(e.target.value)}                
               />
-            </p>
+            </div>
             <button type='submit'>Submit</button>
           </form>
           <p className='error-message'>{message ? `${message}` : ''}</p>

@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 import Login from "./components/Login"
 import Games from './components/Games';
-import Parties from './components/Party';
 import Dashboard from './components/pages/Users/Dashboard';
 import Register from "./components/Register"
 import SearchGames from './components/pages/Games/SearchGames';
@@ -13,7 +12,7 @@ import About from './components/About';
 import Main from './components/Main';
 import Layout from './components/layouts/Layout';
 import Navibar from './components/layouts/Navibar';
-import Party from './components/Party';
+import PartiesList from './components/PartiesList';
 import CreateParty from './components/pages/Parties/CreateParty';
 
 function App() {
@@ -101,7 +100,7 @@ function App() {
           />
           <Route
             path="/party"
-            element={<Party/>}
+            element={<PartiesList/>}
           />
           <Route
               path="/create-party"
@@ -109,11 +108,6 @@ function App() {
             />
         </Routes>
         </Layout>
-
-        
-      <Link to="/logout">
-        <button onClick={handleLogout}>Logout</button>
-      </Link>
       </BrowserRouter>
     </div>
   );
