@@ -1,6 +1,6 @@
 import { Link, Navigate} from 'react-router-dom'
 import Games from '../pages/Games/Games'
-export default function Navibar ({ games, setGames, currentGame, setCurrentGame,currentUser, setCurrentUser}) {
+export default function Navibar ({ setCurrentParty, currentParty, games, setGames, currentGame, setCurrentGame,currentUser, setCurrentUser}) {
   const handleLogout = () => {
     if (localStorage.getItem('jwt')) localStorage.removeItem('jwt')
     setCurrentUser(null)    
@@ -12,7 +12,7 @@ export default function Navibar ({ games, setGames, currentGame, setCurrentGame,
         <Link to='/'><h1>LFG</h1></Link>
       </div>
       <div className='navbar-main' >        
-        <Games games={games} setGames={setGames}  currentGame={currentGame} setCurrentGame={setCurrentGame}/>
+        <Games currentParty={currentParty} setCurrentParty={setCurrentParty} games={games} setGames={setGames}  currentGame={currentGame} setCurrentGame={setCurrentGame}/>
       </div>
 
       <div className='navbar-footer'>      

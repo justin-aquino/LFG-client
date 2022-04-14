@@ -1,6 +1,5 @@
 function Members({currentParty}) {
 
-    console.log(currentParty)
     const mappedMembers = currentParty.members.map(member => {
         if (member.admin == true) {
             return <h3>{member.userName} - admin</h3>
