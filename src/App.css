@@ -258,13 +258,11 @@ article img {
 .header-on-dark {
   padding: 15px;
   color: var(--white);
-
 }
 .header-on-light {
   padding: 15px;
   color: var(--black);
 }
-
 /* .about-descriptionApp {
   font-size: 16px;
   margin: 10px;
@@ -278,3 +276,23 @@ article img {
   text-align: center;
   margin: 10px;
 } */
+.party-container{
+  display: flex;
+  flex-direction: row;
+  width: 800px;
+  margin: 20px 20px 20px 20px;
+  background-color: #FFBF00;
+}
+.party-left{
+  width: 500px;
+}
+.party-member-container{
+  width: 200px;
+  height: 75%;
+  background-color: #7c8496;
+}
+.party-request-container{
+  width: 200px;
+  height: 20%;
+  background-color: #2d4c96;
+}
