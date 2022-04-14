@@ -17,7 +17,7 @@ export default function CreateParty ({currentGame, partyList, setPartyList, curr
         ],
         requests: []
     })
-    // console.log(currentGame)
+
     const [message, setMessage] = useState('')
 
     const handleSubmit = async (e) => {
