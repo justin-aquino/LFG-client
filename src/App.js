@@ -63,7 +63,7 @@ function App() {
         <Routes>
         <Route 
             path='/'
-            element={<Main currentParty={currentParty} setCurrentParty={setCurrentParty} currentGame={currentGame} setCurrentGame={setCurrentGame} />}
+            element={<Main currentParty={currentParty} setCurrentParty={setCurrentParty} currentGame={currentGame} setCurrentGame={setCurrentGame} currentUser={currentUser} />}
           />
           {/* <Route 
             path='/games'

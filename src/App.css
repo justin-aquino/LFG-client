@@ -251,6 +251,7 @@ main {
   left: 30%;
   transform: translate(0, -50%);     */
   display: flex;
+  width:100%;
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: row;
