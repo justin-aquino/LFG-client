@@ -18,14 +18,12 @@ import CreateParty from './components/pages/Parties/CreateParty';
 function App() {
   const [currentUser, setCurrentUser] = useState({
     email: '',
-    firstname: '',
-    lastname: '',
-    manager: false,
     username: ''
   })
   const [users, setUsers] = useState([])
   const [games, setGames] = useState([])
   const [currentGame, setCurrentGame] = useState({})
+  // const [partyList, setPartyList] = useState([])
   
   useEffect(() => {
          axios.get(`${process.env.REACT_APP_SERVER_URL}/game`)
@@ -35,6 +33,8 @@ function App() {
       })
 
   }, [])
+
+  // console.log(currentGame)
 
   useEffect(() => { 
     const token = localStorage.getItem('jwt')
@@ -104,7 +104,7 @@ function App() {
           />
           <Route
               path="/create-party"
-              element={<CreateParty/>}
+              element={<CreateParty currentGame={currentGame} partyList={partyList} setPartyList={setPartyList}/>}
             />
         </Routes>
         </Layout>

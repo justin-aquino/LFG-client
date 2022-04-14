@@ -1,22 +1,37 @@
+import axios from "axios"
 import { useEffect, useState } from "react"
 
 
-export default function CreateParty () {
+export default function CreateParty ({currentGame, partyList, setPartyList}) {
     const [form, setForm] = useState({
-        gameId: "",
-        userId: "",
+        gameId: "625856bd76cfcc732695c0bf",
+        userId: "6257c3b5c447bf9be2d7b801",
         partyName: "",
         description: "",
+        members: [
+          {
+            userId: "6257c3b5c447bf9be2d7b801",
+            admin: "true"
+          }
+        ],
+        requests: []
     })
-
+    // console.log(currentGame)
     const [message, setMessage] = useState('')
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log(e.target.value)
+        // console.log(e.target.value)
+       await axios
+          .post(`${process.env.REACT_APP_SERVER_URL}/party/${form.gameId}`, form)
+          .then(response => {
+            console.log(response.data)
+            setPartyList([...partyList, form])
+          })
     }
     
     return (
+      
         <div className='user-forms-card'>
         <h1>Create a Party!</h1>
           
