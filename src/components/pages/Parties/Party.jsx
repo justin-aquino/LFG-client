@@ -2,6 +2,7 @@ import Requests from './Requests';
 import Members from './Members';
 
 function Party({ currentParty }) {
+
   return (
     <>
     <div className="party-container">
@@ -10,9 +11,9 @@ function Party({ currentParty }) {
           <h1>{currentParty.partyName} Party</h1>
         </div>
         <div id="post area">
-          <h2> post</h2>
-          <h2> post</h2>
-          <h2> post</h2>
+          <p>
+            {currentParty.description}
+          </p>
         </div>
       </div>
       <div className="part-right">

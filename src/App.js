@@ -22,7 +22,8 @@ function App() {
   })
   const [users, setUsers] = useState([])
   const [games, setGames] = useState([])
-  const [currentGame, setCurrentGame] = useState({})
+  const [currentGame, setCurrentGame] = useState({})  
+  const [currentParty, setCurrentParty] = useState(null)
 
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_SERVER_URL}/game`)
