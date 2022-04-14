@@ -24,6 +24,7 @@ function Party({ currentParty, currentUser }) {
       <div className="part-right">
         <Members currentParty={currentParty}/>
         <Requests currentParty={currentParty}/>
+        
       </div>
     </div>
     <RequestForm currentParty={currentParty} currentUser={currentUser} />
