@@ -148,6 +148,7 @@ main {
   text-shadow: 0 0 10px #ffbf00;
 }
 
+
 /* this is the class for the party div */
 .navbar-party {
   height: 100%;
@@ -167,8 +168,9 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: flex-start;  
 }
+
 .navbar-party::-webkit-scrollbar {
   display: none;
 }
