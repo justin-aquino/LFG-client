@@ -62,7 +62,7 @@ function App() {
         <Routes>
         <Route 
             path='/'
-            element={<Main currentGame={currentGame} setCurrentGame={setCurrentGame} />}
+            element={<Main currentGame={currentGame} setCurrentGame={setCurrentGame} currentUser={currentUser} />}
           />
           {/* <Route 
             path='/games'

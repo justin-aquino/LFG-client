@@ -2,9 +2,9 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-export default function Parties({ currentGame, setCurrentGame, setCurrentParty}) {
+export default function Parties({ currentGame, setCurrentGame, setCurrentParty, setShowCreateParty}) {
   const [currentParties, setCurrentParties] = useState([]);
-  const [showCreatParty, setShowCreateParty] = useState(false)
+  
   useEffect(() => {
     try {
       axios.get(`${process.env.REACT_APP_SERVER_URL}/party/${currentGame._id}`)
@@ -17,7 +17,11 @@ export default function Parties({ currentGame, setCurrentGame, setCurrentParty})
   }, [currentGame]);
   
   const handlePartySelect = party => {
+    setShowCreateParty(false)
     setCurrentParty(party)
+  }
+  const handleCreateParty =  currentGame => {
+    setShowCreateParty(true)
   }
   const listParties = currentParties.map((element, idx) => {
 
@@ -28,16 +32,17 @@ export default function Parties({ currentGame, setCurrentGame, setCurrentParty})
     );
   });
 
-  return <>
-  <div className='header-on-dark'><h1>{currentGame.name}</h1></div>
-  <fieldset>
-  <legend><h2>Parties</h2></legend>
-  {listParties}
-  </fieldset>
+  return(
+  <>
+    <div className='header-on-dark'><h1>{currentGame.name}</h1></div>
+    <fieldset>
+    <legend><h2>Parties</h2></legend>
+    {listParties}
+    </fieldset>
+    <div className='navbar-party-footer'>
+    <p><Link to='' onClick={() => handleCreateParty(currentGame)}>Create a party</Link></p>
+    </div>  
+  </>  
   
-  <div className='navbar-party-footer'>
-    <p><Link to='/party' onClick={() => handleCreateParty}>Create a party</Link></p>
-  </div>
-    
-  </>;
+  ) 
 }

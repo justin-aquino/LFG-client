@@ -12,21 +12,20 @@ export default function CreateParty ({currentGame, partyList, setPartyList, curr
         members: [
           {
             userId: currentUser.id,
+            userName: currentUser.username,
             admin: "true"
           }
         ],
         requests: []
     })
-
     const [message, setMessage] = useState('')
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         // console.log(e.target.value)
-       await axios.post(`${process.env.REACT_APP_SERVER_URL}/party/${form.gameId}`, form)
+       await axios.post(`${process.env.REACT_APP_SERVER_URL}/party`, form)
           .then(response => {
             console.log(response.data)
-            setPartyList([...partyList, form])
           })
     }
     
