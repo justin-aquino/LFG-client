@@ -26,6 +26,7 @@ function App() {
   const [users, setUsers] = useState([])
   const [games, setGames] = useState([])
   const [currentGame, setCurrentGame] = useState({})
+  const [currentParty, setCurrentParty] = useState({})
   
   useEffect(() => {
          axios.get(`${process.env.REACT_APP_SERVER_URL}/game`)
@@ -64,7 +65,7 @@ function App() {
         <Routes>
         <Route 
             path='/'
-            element={<Main currentGame={currentGame} setCurrentGame={setCurrentGame} />}
+            element={<Main setCurrentParty={setCurrentParty} currentGame={currentGame} setCurrentGame={setCurrentGame} />}
           />
           {/* <Route 
             path='/games'
@@ -100,7 +101,7 @@ function App() {
           />
           <Route
             path="/party"
-            element={<Party />}
+            element={<Party setCurrentParty={setCurrentParty} />}
           />
         </Routes>
         </Layout>
