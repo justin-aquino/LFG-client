@@ -12,7 +12,7 @@ export default function Main(currentGame, setCurrentGame) {
         :
         null
         }  
-        <div>Main container</div>      
+        <div className="container-main"><Parties currentGame={currentGame.currentGame} setCurrentGame={setCurrentGame} /></div>      
         </>
     )    
 }

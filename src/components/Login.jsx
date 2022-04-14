@@ -44,43 +44,33 @@ export default function Login({ currentUser, setCurrentUser }) {
   // navigate to the user's profile if currentUser is NOT null
   if (currentUser) return <Navigate to="/dashboard" />
   return (
-    <div className="container">
-      <div className="title-Main">
-
-      </div>
-      <div className="formContainer">
-        <div className="subMain">
-          <h1 className="sign-in">Sign In</h1>
-          <h5 className="error-msg">{msg ? `${msg}` : ""}</h5>
-        </div>
-
+       <div className="user-forms-card">
+          <h1>Sign In</h1>
+          {/* <h5 className="error-msg">{msg ? `${msg}` : ""}</h5> */}
         <form onSubmit={handleFormSubmit}>
           {/* Email Input */}
           <div>
-            <label htmlFor="username"></label>
+            <label htmlFor="username">Username :</label>
             <input
               type="text"
               id="username"
               onChange={(e) => setForm({ ...form, username: e.target.value })}
               value={form.username}
-              placeholder="username"
-              
             />
           </div>
           <div>
             {/* Password Input */}
-            <label htmlFor="password"></label>
+            <label htmlFor="password">Password :</label>
             <input
               type="password"
               id="password"
               onChange={(e) => setForm({ ...form, password: e.target.value })}
-              value={form.password}
-              placeholder="password"
+              value={form.password}              
               className="passwordInput"
             />
           </div>
           <button type="submit" className="enterButton">
-            Enter
+            Login
           </button>
           <p>
             Don't have an account?{" "}
@@ -89,7 +79,6 @@ export default function Login({ currentUser, setCurrentUser }) {
             </a>
           </p>
         </form>
-      </div>
-    </div>
+      </div>    
   )
 }
