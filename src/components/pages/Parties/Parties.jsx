@@ -1,15 +1,14 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Parties({ currentGame, setCurrentGame }) {
   const [currentParties, setCurrentParties] = useState([]);
-
+  
   useEffect(() => {
     try {
-      axios
-        .get(`${process.env.REACT_APP_SERVER_URL}/party/${currentGame._id}`)
-        .then((res) => {
-          console.log(res.data);
+      axios.get(`${process.env.REACT_APP_SERVER_URL}/party/${currentGame._id}`)
+        .then((res) => {          
           setCurrentParties(res.data);
         });
     } catch (err) {
@@ -20,10 +19,13 @@ export default function Parties({ currentGame, setCurrentGame }) {
   const listParties = currentParties.map((element, idx) => {
     return (
       <div key={`${element.name}-part-${idx}`}>
-        <p>{element.partyName}</p>
+        <Link to=''>{element.partyName}</Link>
       </div>
     );
   });
 
-  return <>{listParties}</>;
+  return <>
+  <h2>{currentGame.name}</h2>
+  {listParties}
+  </>;
 }
