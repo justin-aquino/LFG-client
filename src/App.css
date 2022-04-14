@@ -21,22 +21,22 @@
 main {
   display: flex;
   /* align-items: flex-start;  */
-  align-items: stretch;
+  /* align-items: stretch; */
   /* flex-flow: row wrap; */
   flex-direction: row;
-  flex-wrap: nowrap;
-  align-content: flex-start;
+  /* flex-wrap: nowrap; */
+  /* align-content: flex-start; */
   height: 100%;
   padding: 0px;
   gap: 0px;
-  justify-content: flex-start;
+  /* justify-content: flex-start; */
   min-width: 400px;
-  width: 100%;
+  /* width: 100%; */
   margin-left: 0px;
-  margin-right: 0;  
+  margin-right: 0px;  
   position: fixed;
   left: 140px;
-  background-color: #1D3557;
+  background-color: #616c7c;
 }
 
 .App-header {
@@ -268,4 +268,24 @@ input, textarea, label {
 .about-team-title {
   text-align: center;
   margin: 10px;
+}
+.party-container{
+  display: flex;
+  flex-direction: row;
+  width: 800px;
+  margin: 20px 20px 20px 20px;
+  background-color: #FFBF00;
+}
+.party-left{
+  width: 500px;
+}
+.party-member-container{
+  width: 200px;
+  height: 75%;
+  background-color: #7c8496;
+}
+.party-request-container{
+  width: 200px;
+  height: 20%;
+  background-color: #2d4c96;
 }
