@@ -97,7 +97,7 @@ function App() {
             element={<About currentGame={currentGame} setCurrentGame={setCurrentGame} />}
           />          
           <Route
-              path="/create-party"
+              path="/party"
               element={<CreateParty currentGame={currentGame} />}
             />
         </Routes>

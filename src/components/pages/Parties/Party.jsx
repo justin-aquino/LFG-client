@@ -3,6 +3,7 @@ import Members from './Members';
 
 function Party({ currentParty }) {
   return (
+    <>
     <div className="party-container">
       <div className="party-left">
         <div id="header">
@@ -19,6 +20,7 @@ function Party({ currentParty }) {
         <Requests currentParty={currentParty}/>
       </div>
     </div>
+    </>
   );
 }
 

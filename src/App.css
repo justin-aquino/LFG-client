@@ -47,7 +47,9 @@ main {
   max-height: 90px;  
   border-bottom: .05rem solid var(--red);
 }
-
+.navbar-logo{
+  border-bottom: .05rem solid var(--red);
+}
 .navbar-logo a {
   /* padding: 6px 8px 6px 16px; */
   text-decoration: none;
@@ -71,9 +73,6 @@ main {
   flex-direction: column;
   justify-content:flex-start;
   align-items:center;
-}
-.navbar-logo{
-  border-bottom: .05rem solid var(--red);
 }
 
 .navbar-footer a {
@@ -136,7 +135,7 @@ main {
 /* this is the class for the party div */
 .navbar-party {
   height: 100%;
-  width: fit-content;
+  width: 300px;  
   min-width: 250px;
   max-width: 300px;
   z-index: 0;
@@ -176,6 +175,41 @@ main {
   /* border-left: 10px solid rgb(248, 137, 33); */
   text-shadow: 0 0 10px var(--amber);
 }
+
+.navbar-party-footer{
+  background-color: var(--black);
+  color: var(--white);
+  width: 300px;  
+  min-width: 250px;
+  max-width: 300px;
+  font-size: 18px;
+  margin-bottom: 0;
+  border-top: .05rem solid var(--red);
+  border-right: 0.05rem solid gray;
+  padding: 0 10px 0 5px;  
+  position: fixed;
+  bottom: 0;
+  left: 140px;
+  height: 240px;
+  min-height: 240px;
+  flex-direction: column;
+  justify-content:flex-start;
+  align-items:center;
+}
+
+.navbar-party-footer a {
+  /* padding: 6px 8px 6px 16px; */
+  text-decoration: none;
+  font-size: 18px;
+  color: var(--white);
+  display: block;  
+  font-size: 18px;    
+}
+.navbar-party-footer a:hover {  
+  /* border-left: 10px solid rgb(248, 137, 33); */
+  text-shadow: 0 0 10px var(--amber);
+}
+
 
 .container-main {
  color: var(--blue);
@@ -259,6 +293,13 @@ article img {
   padding: 15px;
   color: var(--black);
 }
+fieldset {
+  border-radius: 5px;
+  width: 95%;
+  text-align: left;
+
+
+}
 /* .about-descriptionApp {
   font-size: 16px;
   margin: 10px;
@@ -275,7 +316,9 @@ article img {
 .party-container{
   display: flex;
   flex-direction: row;
-  width: 800px;
+  align-items: flex-start;
+  width: 90%;
+  min-width: 800px;
   margin: 20px 20px 20px 20px;
   background-color: #FFBF00;
 }

@@ -3,7 +3,7 @@ import Party from './pages/Parties/Party';
 import { useState } from 'react';
 
 export default function Main(currentGame, setCurrentGame) {
-    const [currentParty, setCurrentParty] = useState({})
+    const [currentParty, setCurrentParty] = useState(null)
   return (
     <>
       {currentGame.currentGame.name ? (
@@ -16,7 +16,10 @@ export default function Main(currentGame, setCurrentGame) {
           />
         </div>
       ) : null}
-      {currentParty ? <Party currentParty={currentParty}/> : <></>}
+      <div>
+        {currentParty ? <Party currentParty={currentParty}/> : null }
+      </div>
+      
     </>
   );
 }

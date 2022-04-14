@@ -1,22 +1,26 @@
-function Requests(currentParty) {
-    console.log(currentParty)
-
-    // if (currentParty){
-    //     const allRequests = currentParty.requests.map((element, idx)=>{    
-    //         return(
-    //             <div>
-    //                 <h4>{element.message}</h4>
-    //             </div>
-    //         )
-    
-    //     })
-    // }
-
-    return ( 
-    <div className="party-request-container">
-    <h1>requests</h1>
-    </div>
-     );
+export default function Requests({ currentParty }) {        
+    if(currentParty.requests) {        
+        const listRequest = currentParty.requests.map((element, idx) => {
+            return(
+                <>
+                
+                <h3>{element.userName} - {element.message}</h3>
+                </>
+            )
+        })
+        return(
+            <>
+            <h1>Requests</h1>
+            {listRequest}
+            </>
+        )
+    // if currentParty is empty do this part
+    } else {
+        console.log('empty')
+        return (
+        <>
+        There are no pending request.
+        </>        
+        )
+    }    
 }
-
-export default Requests;

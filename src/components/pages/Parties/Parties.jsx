@@ -33,9 +33,15 @@ export default function Parties({ currentGame, setCurrentGame, setCurrentParty})
   });
 
   return <>
-  <h1>{currentGame.name}</h1>
-  <h2>Parties available</h2>
+  <div className='header-on-dark'><h1>{currentGame.name}</h1></div>
+  <fieldset>
+  <legend><h2>Parties</h2></legend>
   {listParties}
+  </fieldset>
   
+  <div className='navbar-party-footer'>
+    <p><Link to='/party'>Create a party</Link></p>
+  </div>
+    
   </>;
 }

@@ -1,11 +1,11 @@
-import { Link } from 'react-router-dom'
+import { Link, Navigate} from 'react-router-dom'
 import Games from '../pages/Games/Games'
 export default function Navibar ({ games, setGames, currentGame, setCurrentGame,currentUser, setCurrentUser}) {
   const handleLogout = () => {
     if (localStorage.getItem('jwt')) localStorage.removeItem('jwt')
     setCurrentUser(null)    
+    return <Navigate to='/' />  
   }
-
   return (
     <>
       <div className='navbar-logo' >
@@ -18,7 +18,8 @@ export default function Navibar ({ games, setGames, currentGame, setCurrentGame,
       <div className='navbar-footer'>      
       {currentUser ? 
       <>
-        <p><Link to='/logout' onClick={handleLogout}>Logout</Link></p>        
+        <p><Link to='/dashboard' >Profile</Link></p>        
+        <p><Link to='/' onClick={handleLogout}>Logout</Link></p>        
       </>
       :
       <>
@@ -27,7 +28,7 @@ export default function Navibar ({ games, setGames, currentGame, setCurrentGame,
       </>
       } 
       <p><Link to='/about'>About</Link></p>     
-      <p><Link to='/'>Help</Link></p>
+      {/* <p><Link to='/'>Help</Link></p> */}
       </div>
     </>
   )
