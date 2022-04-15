@@ -16,14 +16,14 @@ const Dashboard = ({setCurrentUser, games, currentUser }) => {
 
   });
 
- useEffect(() => {
-   setForm({
-    id: currentUser.id,
-    game_fk: "",
-    username: ""
+//  useEffect(() => {
+//    setForm({
+//     id: currentUser.id,
+//     game_fk: "",
+//     username: ""
 
-  })
- }, [])
+//   })
+//  }, [])
   const handleSelect =(e)=>{
     console.log(games)
     const game = games.find((game, idx)=>{

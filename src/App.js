@@ -50,7 +50,7 @@ function App() {
         setUsers(response.data)
     })
     .catch(console.log)
-  }, [currentUser])
+  }, [])
 
   const handleLogout = () => {
     if (localStorage.getItem('jwt')) localStorage.removeItem('jwt')
