@@ -1,8 +1,9 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
+import { Navigate } from "react-router-dom"
 
 
-export default function CreateParty ({currentGame, currentUser}) {
+export default function CreateParty ({currentGame, currentUser, currentParty, setCurrentParty}) {
   
   const [form, setForm] = useState({
         gameId: currentGame._id,
@@ -18,16 +19,25 @@ export default function CreateParty ({currentGame, currentUser}) {
         ],
         requests: []
     })
-    const [message, setMessage] = useState('')
+  const [message, setMessage] = useState('')
 
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        // console.log(e.target.value)
-       await axios.post(`${process.env.REACT_APP_SERVER_URL}/party`, form)
-          .then(response => {
-            console.log(response.data)
-          })
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    await axios.post(`${process.env.REACT_APP_SERVER_URL}/party`, form)
+    .then(response => {
+      setCurrentParty(response.data)    
+    })
+
+    const boardForm = {
+      partyId : currentParty._id
     }
+    
+    await axios.post(`${process.env.REACT_APP_SERVER_URL}/board`,boardForm)
+    .then(resp => {
+      setMessage('Party created successfully!')
+    })
+  }
     
     return (
       
@@ -86,7 +96,7 @@ export default function CreateParty ({currentGame, currentUser}) {
               
               <button type='submit'>Submit</button>
             </form>
-            <p className='error-message'>{message ? `${message}` : ''}</p>
+            <p>{message}</p>
           </div>
     )
 }

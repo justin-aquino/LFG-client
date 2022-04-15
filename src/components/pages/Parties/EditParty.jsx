@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 
-export default function EditParty({ currentGame, currentParty, setCurrentParty, currentUser, setSelectedComponent }) {
+export default function EditParty({ currentGame, currentParty, setCurrentParty, currentUser, setSelectedComponent, refresher, setRefresher }) {
     console.log(currentGame)
     const [form, setForm] = useState({
         gameId: currentGame._id,
@@ -17,6 +17,8 @@ export default function EditParty({ currentGame, currentParty, setCurrentParty, 
             .then(response => {                
                 setMessage(response.data)
                 setCurrentParty(response.data)
+                setRefresher(!refresher)
+
             })
     }
     
