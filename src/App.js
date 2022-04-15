@@ -19,7 +19,8 @@ function App() {
   const [currentUser, setCurrentUser] = useState({
     email: '',
     username: '',
-    games:[]
+    games:[],
+    parties: []
   })
   const [users, setUsers] = useState([])
   const [games, setGames] = useState([])
