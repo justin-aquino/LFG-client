@@ -1,14 +1,34 @@
-export default function Members ({ currentParty }) {
+import axios from "axios"
+import { useState } from "react"
 
 
-  const makeAdmin = (member) => {
-      console.log(member)
+export default function Members ({ currentParty, setCurrentParty }) {
+
+  const [form, setForm] = useState({
+    userId: "",
+    admin: true
+  })
+
+
+  const makeAdmin = async (member) => {
+      setForm({...form, userId: member.userId})
+      await axios
+            .put(`${process.env.REACT_APP_SERVER_URL}/party/${currentParty._id}/co-admin`, form)
+            .then(response => {
+
+              setCurrentParty(response.data.foundParty)
+            })
+       }
+
+  const kickMember = async (member) => {
+
+    await axios
+          .put(`${process.env.REACT_APP_SERVER_URL}/party/${currentParty._id}/kick`, {userId: member.userId})
+          .then(response => {
+            setCurrentParty(response.data.foundParty)
+          })
   }
-
-  const kickMember = (member) => {
-      console.log(member)
-  }
-
+// console.log(kickForm)
   const mappedMembers = currentParty.members.map(member => {
     if (member.admin === true) {      
       return <div className="name-list">{member.userName} (Admin)</div>
