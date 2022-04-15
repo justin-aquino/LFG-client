@@ -23,7 +23,8 @@ export default function Requests ({ currentParty, setCurrentParty }) {
     console.log(request)
     const form = {
       userId: request.userId,
-      userName: request.userName
+      userName: request.userName,
+      _id: request._id //I added this because it was not deleting the approved member's request in the pending list.
     }
     try {
       await axios
