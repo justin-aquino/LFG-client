@@ -1,8 +1,8 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 
-
-export default function CreateParty({ currentGame, currentParty, currentUser }) {
+export default function EditParty({ currentGame, currentParty, setCurrentParty, currentUser, setSelectedComponent }) {
+    console.log(currentGame)
     const [form, setForm] = useState({
         gameId: currentGame._id,
         userId: currentUser.id,
@@ -10,20 +10,21 @@ export default function CreateParty({ currentGame, currentParty, currentUser }) 
         description: currentParty.description
     })
     const [message, setMessage] = useState('')
-
+    
     const handleSubmit = async (e) => {
-        e.preventDefault()
-        // console.log(e.target.value)
+        e.preventDefault()        
         await axios.put(`${process.env.REACT_APP_SERVER_URL}/party/${currentParty._id}`, form)
-            .then(response => {
-                console.log(response.data)
+            .then(response => {                
+                setMessage(response.data)
+                setCurrentParty(response.data)
             })
     }
+    
 
     return (
 
         <div className='party-forms-card'>
-            <h1>Edit this Party!</h1>
+            <h3>Edit this Party!</h3>
             <form onSubmit={handleSubmit}>
                 <p>
                     <label htmlFor='gameName'>Game : </label>
@@ -76,8 +77,9 @@ export default function CreateParty({ currentGame, currentParty, currentUser }) 
                 </p>
 
                 <button type='submit'>Submit</button>
+                <button type='submit' onClick={()=>setSelectedComponent('0')}>Close</button>
             </form>
-            <p className='error-message'>{message ? `${message}` : ''}</p>
+            <p>{message ? `Party updated!` : null}</p>
         </div>
     )
 }

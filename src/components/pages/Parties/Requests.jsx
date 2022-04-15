@@ -1,7 +1,6 @@
 import { FaCheckCircle } from "react-icons/fa"
 import { TiDelete } from "react-icons/ti"
 
-
 export default function Requests({ currentParty }) {     
     
     const deleteRequest = (request) => {
@@ -20,18 +19,19 @@ export default function Requests({ currentParty }) {
                         <span onClick={() => {approveRequest(element)}}> ✅</span>
                         <span onClick={() => {deleteRequest(element)}}>❌</span>
                     </h3>
+
                 </div>
             )
         })
         return(
             <>
-            <h1>Requests</h1>
+            <h3>Requests</h3>            
             {listRequest}
             </>
         )
     // if currentParty is empty do this part
-    } else {
-        console.log('empty')
+    } else {        
+        console.log('helloe')
         return (
         <>
         There are no pending request.
