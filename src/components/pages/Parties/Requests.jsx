@@ -1,5 +1,7 @@
+import axios from "axios"
 import { FaCheckCircle } from "react-icons/fa"
 import { TiDelete } from "react-icons/ti"
+
 
 export default function Requests({ currentParty }) {     
     
@@ -19,19 +21,18 @@ export default function Requests({ currentParty }) {
                         <span onClick={() => {approveRequest(element)}}> ✅</span>
                         <span onClick={() => {deleteRequest(element)}}>❌</span>
                     </h3>
-
                 </div>
             )
         })
         return(
             <>
-            <h3>Requests</h3>            
+            <h1>Requests</h1>
             {listRequest}
             </>
         )
     // if currentParty is empty do this part
-    } else {        
-        console.log('helloe')
+    } else {
+        console.log('empty')
         return (
         <>
         There are no pending request.
