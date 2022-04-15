@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
-const Dashboard = ({ games, currentUser }) => {
+const Dashboard = ({setCurrentUser, games, currentUser }) => {
 
   const navigate = useNavigate()
   const [msg, setMessage] = useState("")
@@ -42,15 +42,17 @@ const Dashboard = ({ games, currentUser }) => {
     );
   });
 
-  // const allAlias = currentUser.games.map((element, idx)=>{
+  const allAlias = currentUser.games.map((element, idx)=>{
 
-  //   const game = games.find((game, idx)=>{
-  //     return element.name = game.name
-  //   })
-  //   return(
-  //     <h3>Game: {game.name}</h3>
-  //   )
-  // })
+ 
+    return(
+      <div style={{border: '1px solid yellow'}}>
+      <h3>Game: {element.gameName}</h3>
+      <h3>Alias: {element.username}</h3>
+      </div>
+    )
+  })
+  
   
   const handleEditSubmit = async (e) => {
     e.preventDefault();
@@ -65,23 +67,35 @@ const Dashboard = ({ games, currentUser }) => {
         id: currentUser.id,
         game_fk: "",
         username: ""
-    
+        
       })
       navigate("/")
       navigate("/dashboard")
+      setCurrentUser({...currentUser})
     } catch(err){
       setMessage(err.response.data.msg)
     }
   };
-
+  
+  
+  // useEffect(() => {
+  //   try {
+  //     console.log(`${process.env.REACT_APP_SERVER_URL}/users/${currentUser.id}`)
+  //     axios.get(`${process.env.REACT_APP_SERVER_URL}/users/${currentUser.id}`)
+  //       .then((res) => {         
+  //         console.log("hello") 
+  //         setCurrentUser(res.data);
+  //       });      
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // }, []);
 
   return (
     <>
       <div className="header-on-dark">
         <h1>{currentUser.username}'s Dashboard</h1>
         <h3>Email: {currentUser.email}</h3>
-        <h2>All Game Alias</h2>
-        {/* {allAlias} */}
         
         <form action="https://google.ca" onSubmit={handleEditSubmit}>
           {/* <input hidden name="userId" type="text">{currentUser.id}</input> */}
@@ -94,6 +108,8 @@ const Dashboard = ({ games, currentUser }) => {
           <input type="submit" />
         </form>
         {msg ? <h2 style={{color: "red"}}>{msg}</h2> : <></>} 
+        <h2>Online Game Names</h2>
+        {allAlias}
       </div>
     </>
   );
