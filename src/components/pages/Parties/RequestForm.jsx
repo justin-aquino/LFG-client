@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import axios from 'axios'
 
-export default function RequestForm ({
-  currentParty,
-  setCurrentParty,
+export default function RequestForm ({currentParty,setCurrentParty,
   currentUser,
-  setSelectedComponent
+  setSelectedComponent,
+  refresher,
+  setRefresher
 }) {
   const [form, setForm] = useState({
     userId: currentUser.id,
@@ -26,12 +26,15 @@ export default function RequestForm ({
         )
         .then(response => {
           setRequests(response.data.msg)
+          setRefresher(!refresher)          
+          setCurrentParty(response.data.newRequest)     
         })
     } catch (err) {
       console.log(err)
     }
   }
   console.log(requests)
+  console.log(currentParty)
   return (
     <>
       <div className='party-forms-card'>

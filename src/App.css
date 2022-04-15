@@ -1,15 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Akshar:wght@300;500;600&display=swap');
 :root{
-  --black:#201E1E;
+  --black:#151414;
+  --gray:#201E1E;  
   --red: #D90429;
   --blue: #1D3557;
   --amber: #FFBF00;
   --emerald: #32936F;
   --white:#f0f8ff; 
+  --light: 300;
+  --medium: 500;
+  --bold: 600;
 }
 * {
-  font-family: 'Bebas Neue', cursive;
-  font-weight: 400;  
+  /* font-family: 'Bebas Neue', cursive; */
+  font-family: 'Akshar', sans-serif;
+
+  font-weight: var(--light);  
   box-sizing: border-box;      
 }
 body {
@@ -38,9 +44,12 @@ main {
   /* border: .1rem solid  white; */
   overflow: auto;
 }
+h1, h2, h3, h4{
+font-weight: var(--bold);
+}
 
 .navbar-logo{
-  background-color: #151414;
+  background-color: var(--black);
   color: var(--white);
   width: 140px;
   margin-top: 0;
@@ -62,7 +71,7 @@ main {
   font-size: 18px;    
 }
 .navbar-footer{
-  background-color: #151414;
+  background-color: var(--black);
   color: var(--white);
   width: 140px;
   font-size: 18px;
@@ -99,11 +108,11 @@ main {
   top: 90px;
   bottom: 500px;
   left: 0;
-  background-color: #151414;
+  background-color: var(--black);
   overflow-x: hidden;  
   overflow-y: scroll;
   padding: 0 10px 0 15px;
-  font-weight: 400;
+  font-weight: var(--medium);
   font-size: 16px;
   color: var(--white);    
   padding-bottom: 400px;  
@@ -124,11 +133,10 @@ main {
   text-decoration: none;
   font-size: 25px;
   color: var(--white);
-  display: block;
-  font-weight: 400;
+  display: block;  
   font-size: 20px;
   padding: 5px;
-  font-weight: 500;  
+  font-weight: var(--medium);  
 }
 .navbar-main a:hover {  
   /* border-left: 10px solid rgb(248, 137, 33); */
@@ -145,7 +153,7 @@ main {
   z-index: 0;
   top: 60px;  
   left: 0;
-  background-color: var(--black);
+  background-color: var(--gray);
   overflow-x: hidden;  
   padding: 10px 10px 10px 10px;  
   margin-left: 0px;    
@@ -171,7 +179,7 @@ main {
   font-size: 25px;
   color: var(--white);
   display: block;
-  font-weight: 400;
+  font-weight: var(--medium);
   font-size: 20px;
   padding: 5px;  
 }
@@ -181,7 +189,7 @@ main {
 }
 
 .navbar-party-footer{
-  background-color: var(--black);
+  background-color: var(--gray);
   color: var(--white);
   width: 300px;  
   min-width: 250px;
@@ -311,7 +319,7 @@ article img {
 }
 .header-on-light {
   padding: 15px;
-  color: var(--black);
+  color: var(--gray);
 }
 fieldset {
   border-radius: 5px;
@@ -330,7 +338,7 @@ fieldset {
   align-items: flex-start;
   flex-direction: column;
   padding: 0px 15px 0px 15px;
-  
+  z-index: 1;
 
 }
 .party-container a {  
@@ -346,16 +354,20 @@ fieldset {
   position: fixed;
   right: 0;
   top:0;
+  z-index: 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   width:200px;
-  background-color: var(--black);
+  min-width:90px;
+  max-width:200px;
+  background-color: var(--gray);
   color: var(--white);
   padding-left:10px;
   font-size: 16px;
   height: 100%;
   overflow-x: hidden;  
+  border-left: 0.05rem solid gray;
 }
 .party-member-container a {  
   color: var(--white);  
@@ -378,4 +390,70 @@ fieldset {
 
 .glow-text {
   text-shadow: 0 0 10px var(--amber); 
+}
+.name-list {
+  display:flex;
+  flex-direction: row;
+  font-weight: lighter;
+  padding: 3px 0px 3px 0px;
+}
+.tooltip {
+  position:relative; 
+}
+
+.tooltip:before {
+  content: attr(data-text);
+  position:absolute;
+  top:0;
+  transform:translateY(-100%);  
+  left:initial;
+  margin-left:initial;
+  font-weight: lighter;  
+  width:160px;
+  padding:10px 5px 10px 10px;
+  border-radius:10px;
+  background:var(--amber);  
+  color: var(--blue);  
+  text-align: left;
+  display:none; 
+  z-index: 1;
+  height:100px;
+  
+}
+.tooltip:hover:before {
+  display:block;  
+  opacity: 1;
+}
+
+.message-footer{
+  background-color: var(--gray);
+  color: var(--white);
+  width: 100%;  
+  min-width: 800px;
+  z-index: -1;
+  font-size: 18px;
+  margin-bottom: 0;
+  border-top: .05rem solid var(--red);
+  border-right: 0.05rem solid gray;
+  padding: 0 10px 0 5px;  
+  position: fixed;
+  bottom: 0;  
+  height: 140px;
+  min-height: 140px;
+  flex-direction: column;
+  justify-content:flex-start;
+  align-items:center;
+}
+
+.message-footer a {
+  /* padding: 6px 8px 6px 16px; */
+  text-decoration: none;
+  font-size: 18px;
+  color: var(--white);
+  display: block;  
+  font-size: 18px;    
+}
+.message-footer a:hover {  
+  /* border-left: 10px solid rgb(248, 137, 33); */
+  text-shadow: 0 0 10px var(--amber);
 }

@@ -1,4 +1,5 @@
-function Members ({ currentParty }) {
+export default function Members ({ currentParty }) {
+
 
   const makeAdmin = (member) => {
       console.log(member)
@@ -9,27 +10,26 @@ function Members ({ currentParty }) {
   }
 
   const mappedMembers = currentParty.members.map(member => {
-    if (member.admin === true) {
-      return <p>{member.userName} (Admin)</p>
+    if (member.admin === true) {      
+      return <div className="name-list">{member.userName} (Admin)</div>
     } else {
       return (
-        <h3 >
-            {member.userName} - {member.message} 
+        <div className="name-list">
+            {member.userName}
             <span onClick={() => {makeAdmin(member)}}> ✅</span>
             <span onClick={() => {kickMember(member)}}>❌</span>
-        </h3>
-
+        </div>
       ) 
     }
   })
 
   return (
     <>
-      <h3>Members:</h3>
+      <h3>Members:</h3>      
       {mappedMembers}
     </>
   )
 
 }
 
-export default Members
+
