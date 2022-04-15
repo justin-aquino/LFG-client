@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
-const Dashboard = ({setCurrentUser, games, currentUser }) => {
+const Dashboard = ({setCurrentUser, games, currentUser}) => {
 
   const navigate = useNavigate()
   const [msg, setMessage] = useState("")
@@ -16,14 +16,14 @@ const Dashboard = ({setCurrentUser, games, currentUser }) => {
 
   });
 
-//  useEffect(() => {
-//    setForm({
-//     id: currentUser.id,
-//     game_fk: "",
-//     username: ""
+ useEffect(() => {
+   setForm({
+    id: currentUser.id,
+    game_fk: "",
+    username: ""
 
-//   })
-//  }, [])
+  })
+ }, [])
   const handleSelect =(e)=>{
     console.log(games)
     const game = games.find((game, idx)=>{
@@ -31,7 +31,8 @@ const Dashboard = ({setCurrentUser, games, currentUser }) => {
           return game._id === e.target.value
         })
         console.log(game)
-    setForm({...form, game_fk : e.target.value, gameName: game.name})
+        console.log(currentUser._id)
+    setForm({...form, id: currentUser._id, game_fk : e.target.value, gameName: game.name})
 
   }
   const allGames = games.map((element, idx) => {
@@ -58,20 +59,25 @@ const Dashboard = ({setCurrentUser, games, currentUser }) => {
     e.preventDefault();
     setMessage("")
     try{
-
       await axios.put(`${process.env.REACT_APP_SERVER_URL}/users/edit`, form)
       .then(response=>{
         console.log(response.data)
+        setCurrentUser(response.data.foundUser);
+        setForm({
+          id: response.data.foundUser._id,
+          game_fk: "",
+          username: ""
+          
+        })
       })
-      setForm({
-        id: currentUser.id,
-        game_fk: "",
-        username: ""
-        
-      })
+      // await axios.get(`${process.env.REACT_APP_SERVER_URL}/users/${currentUser.id}`)
+      //   .then((res) => {         
+      //     console.log("hello") 
+      //     setCurrentUser(res.data);
+      //   });   
       navigate("/")
       navigate("/dashboard")
-      setCurrentUser({...currentUser})
+      // setCurrentUser({...currentUser})
     } catch(err){
       setMessage(err.response.data.msg)
     }
