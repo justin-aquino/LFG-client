@@ -86,7 +86,7 @@ function App() {
           /> */}
           <Route 
             path='/dashboard'
-            element={<Dashboard games={games} currentUser={currentUser} />}
+            element={<Dashboard  setCurrentUser={setCurrentUser} games={games} currentUser={currentUser} />}
           />
           <Route
             path="/login"

@@ -33,10 +33,10 @@ export default function Requests ({ currentParty, setCurrentParty }) {
         })
     } catch (error) {}
   }
-
   if (currentParty.requests) {
     const listRequest = currentParty.requests.map((element, idx) => {        
       return (
+
         <>
         <div className='name-list' id={`requestID-${idx}`}>
           <span className='tooltip left' data-text={element.message}> {element.userName} </span>           

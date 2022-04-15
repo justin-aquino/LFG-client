@@ -3,8 +3,8 @@ import { useEffect, useState } from "react"
 import { Navigate } from "react-router-dom"
 
 
-export default function CreateParty ({currentGame, currentUser, currentParty, setCurrentParty}) {
-  
+
+export default function CreateParty ({currentGame, currentUser, currentParty, setCurrentParty}) {  
   const [form, setForm] = useState({
         gameId: currentGame._id,
         userId: currentUser.id,
@@ -21,15 +21,15 @@ export default function CreateParty ({currentGame, currentUser, currentParty, se
     })
   const [message, setMessage] = useState('')
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-
-    await axios.post(`${process.env.REACT_APP_SERVER_URL}/party`, form)
-    .then(response => {
-      setCurrentParty(response.data)    
-    })
-
-    const boardForm = {
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        // console.log(e.target.value)
+       await axios.post(`${process.env.REACT_APP_SERVER_URL}/party`, form)
+          .then(response => {
+            setCurrentUser({...currentUser, parties: response.data.parties})
+            console.log(response.data.parties)
+          })
+      const boardForm = {
       partyId : currentParty._id
     }
     
