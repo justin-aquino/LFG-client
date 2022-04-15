@@ -27,8 +27,8 @@ export default function CreateParty ({currentGame, setCurrentUser, currentUser, 
         // console.log(e.target.value)
        await axios.post(`${process.env.REACT_APP_SERVER_URL}/party`, form)
           .then(response => {
-            setCurrentUser({...currentUser, parties: response.data.parties})
-            console.log(response.data.parties)
+            setCurrentUser({...currentUser, parties: response.data.foundUser.parties})
+            console.log(response.data.foundUser.parties)
           })
       const boardForm = {
       partyId : currentParty._id

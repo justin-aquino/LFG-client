@@ -9,7 +9,6 @@ export default function Members ({ currentParty, setCurrentParty }) {
     admin: true
   })
 
-
   const makeAdmin = async (member) => {
       setForm({...form, userId: member.userId})
       await axios
@@ -19,22 +18,19 @@ export default function Members ({ currentParty, setCurrentParty }) {
               setCurrentParty(response.data.foundParty)
             })
        }
-
   const kickMember = async (member) => {
-
     await axios
           .put(`${process.env.REACT_APP_SERVER_URL}/party/${currentParty._id}/kick`, {userId: member.userId})
           .then(response => {
             setCurrentParty(response.data.foundParty)
           })
   }
-// console.log(kickForm)
-  const mappedMembers = currentParty.members.map(member => {
+  const mappedMembers = currentParty.members.map((member, idx) => {
     if (member.admin === true) {      
-      return <div className="name-list">{member.userName} (Admin)</div>
+      return <div  key={`member-id-${idx}`} className="name-list">{member.userName} (Admin)</div>
     } else {
       return (
-        <div className="name-list">
+        <div key={`member-id-${idx}`} className="name-list">
             {member.userName}
             <span onClick={() => {makeAdmin(member)}}> ✅</span>
             <span onClick={() => {kickMember(member)}}>❌</span>
