@@ -9,12 +9,12 @@ export default function Members ({ currentParty }) {
       console.log(member)
   }
 
-  const mappedMembers = currentParty.members.map(member => {
+  const mappedMembers = currentParty.members.map((member, idx) => {
     if (member.admin === true) {      
-      return <div className="name-list">{member.userName} (Admin)</div>
+      return <div  key={`member-id-${idx}`} className="name-list">{member.userName} (Admin)</div>
     } else {
       return (
-        <div className="name-list">
+        <div key={`member-id-${idx}`} className="name-list">
             {member.userName}
             <span onClick={() => {makeAdmin(member)}}> ✅</span>
             <span onClick={() => {kickMember(member)}}>❌</span>
