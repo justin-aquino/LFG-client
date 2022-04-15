@@ -4,7 +4,7 @@ import { Navigate } from "react-router-dom"
 
 
 
-export default function CreateParty ({currentGame, currentUser, currentParty, setCurrentParty}) {  
+export default function CreateParty ({currentGame, setCurrentUser, currentUser, currentParty, setCurrentParty}) {  
   const [form, setForm] = useState({
         gameId: currentGame._id,
         userId: currentUser.id,
