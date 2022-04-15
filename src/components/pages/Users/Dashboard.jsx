@@ -60,7 +60,6 @@ const Dashboard = ({setCurrentUser, games, currentUser}) => {
   
   const allParties = currentUser.parties.map((element, idx)=>{
 
- 
     return(
       <div style={{border: '1px solid pink'}}>
       <h3>Party Name: {element.partyName}</h3>
