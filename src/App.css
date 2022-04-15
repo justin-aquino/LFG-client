@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Akshar:wght@300;500;600&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Akshar:wght@300;500;600&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap');
 :root{
   --black:#151414;
   --gray:#201E1E;  
@@ -13,7 +14,8 @@
 }
 * {
   /* font-family: 'Bebas Neue', cursive; */
-  font-family: 'Akshar', sans-serif;
+  /* font-family: 'Akshar', sans-serif; */
+  font-family: 'Poppins', sans-serif;
 
   font-weight: var(--light);  
   box-sizing: border-box;      
