@@ -13,6 +13,7 @@ import Main from './components/Main';
 import Layout from './components/layouts/Layout';
 import Navibar from './components/layouts/Navibar';
 import CreateParty from './components/pages/Parties/CreateParty';
+import EditParty from './components/pages/Parties/EditParty'
 
 function App() {
   const [currentUser, setCurrentUser] = useState({
@@ -102,7 +103,11 @@ function App() {
           <Route
               path="/party"
               element={<CreateParty currentGame={currentGame} currentUser={currentUser} />}
-            />
+          />
+          <Route
+              path="/edit-party"
+              element={<EditParty currentGame={currentGame} currentUser={currentUser} currentParty={currentParty} />}
+          />
         </Routes>
         </Layout>
       </BrowserRouter>
