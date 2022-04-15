@@ -15,7 +15,6 @@ export default function Parties({ currentGame, setCurrentGame, currentParty, set
       console.log(err);
     }
   }, [currentGame]);
-
   const handlePartySelect = party => {      
     setCurrentParty(party)
   }

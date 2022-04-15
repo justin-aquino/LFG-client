@@ -1,7 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 
-
 export default function EditParty({ currentGame, currentParty, setCurrentParty, currentUser, setSelectedComponent }) {
     console.log(currentGame)
     const [form, setForm] = useState({

@@ -2,7 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 
 
-export default function CreateParty ({currentGame, partyList, setPartyList, currentUser}) {
+export default function CreateParty ({currentGame, currentUser}) {
   
   const [form, setForm] = useState({
         gameId: currentGame._id,

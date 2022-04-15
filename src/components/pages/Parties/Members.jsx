@@ -13,6 +13,7 @@ function Members ({ currentParty }) {
       {mappedMembers}
     </>
   )
+
 }
 
 export default Members

@@ -13,17 +13,20 @@ import Main from './components/Main';
 import Layout from './components/layouts/Layout';
 import Navibar from './components/layouts/Navibar';
 import CreateParty from './components/pages/Parties/CreateParty';
+import EditParty from './components/pages/Parties/EditParty'
 
 function App() {
   const [currentUser, setCurrentUser] = useState({
     email: '',
-    username: ''
+    username: '',
+    games:[]
   })
   const [users, setUsers] = useState([])
   const [games, setGames] = useState([])
   const [currentGame, setCurrentGame] = useState({})  
   const [currentParty, setCurrentParty] = useState(null)
   
+
   useEffect(() => {
          axios.get(`${process.env.REACT_APP_SERVER_URL}/game`)
       .then(res=>{
@@ -83,7 +86,7 @@ function App() {
           /> */}
           <Route 
             path='/dashboard'
-            element={<Dashboard />}
+            element={<Dashboard games={games} currentUser={currentUser} />}
           />
           <Route
             path="/login"
@@ -100,7 +103,11 @@ function App() {
           <Route
               path="/party"
               element={<CreateParty currentGame={currentGame} currentUser={currentUser} />}
-            />
+          />
+          <Route
+              path="/edit-party"
+              element={<EditParty currentGame={currentGame} currentUser={currentUser} currentParty={currentParty} />}
+          />
         </Routes>
         </Layout>
       </BrowserRouter>

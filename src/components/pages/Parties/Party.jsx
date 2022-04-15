@@ -29,8 +29,7 @@ function Party ({ currentParty, setCurrentParty, currentUser, currentGame }) {
       <div className='party-container'>
         <div className='header-on-dark'>
           <h1>{currentParty.partyName} Party</h1>
-        </div>
-        
+        </div>       
           <p>Details : {currentParty.description}</p>
           
             {currentUser ?
@@ -80,3 +79,4 @@ function Party ({ currentParty, setCurrentParty, currentUser, currentGame }) {
 }
 
 export default Party
+
