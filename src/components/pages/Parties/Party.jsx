@@ -12,6 +12,7 @@ function Party({ currentParty, currentUser }) {
         <div id="header">
           <h1>{currentParty.partyName} Party</h1>
         </div>
+        <Link to="/edit-party">Edit</Link>
         <div id="post area">
           <p>
             {currentParty.description}

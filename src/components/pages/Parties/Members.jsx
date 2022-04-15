@@ -4,7 +4,11 @@ function Members({currentParty}) {
         if (member.admin == true) {
             return <h3>{member.userName} - admin</h3>
         } else {
-            return <h3> {member.userName}</h3>
+                return (
+                    <div>
+                        <h3> {member.userName}</h3>
+                    </div>
+                )
         }
       })
 

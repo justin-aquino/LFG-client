@@ -17,7 +17,7 @@ export default function Parties({ currentGame, setCurrentGame, setCurrentParty, 
   }, [currentGame]);
   
   const handlePartySelect = party => {
-    setShowCreateParty(false)
+    // setShowCreateParty(false)
     setCurrentParty(party)
   }
   const handleCreateParty =  currentGame => {
