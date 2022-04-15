@@ -86,7 +86,7 @@ function App() {
           /> */}
           <Route 
             path='/dashboard'
-            element={<Dashboard games={games} currentUser={currentUser} />}
+            element={<Dashboard  setCurrentUser={setCurrentUser} games={games} currentUser={currentUser} />}
           />
           <Route
             path="/login"
@@ -102,7 +102,7 @@ function App() {
           />          
           <Route
               path="/party"
-              element={<CreateParty currentGame={currentGame} currentUser={currentUser} />}
+              element={<CreateParty setCurrentUser={setCurrentUser} currentGame={currentGame} currentUser={currentUser} />}
           />
           <Route
               path="/edit-party"

@@ -2,7 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 
 
-export default function CreateParty ({currentGame, currentUser}) {
+export default function CreateParty ({currentGame, currentUser, setCurrentUser}) {
   
   const [form, setForm] = useState({
         gameId: currentGame._id,
@@ -25,7 +25,8 @@ export default function CreateParty ({currentGame, currentUser}) {
         // console.log(e.target.value)
        await axios.post(`${process.env.REACT_APP_SERVER_URL}/party`, form)
           .then(response => {
-            console.log(response.data)
+            setCurrentUser({...currentUser, parties: response.data.parties})
+            console.log(response.data.parties)
           })
     }
     

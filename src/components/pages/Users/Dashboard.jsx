@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
-const Dashboard = ({ games, currentUser }) => {
+const Dashboard = ({setCurrentUser, games, currentUser}) => {
 
   const navigate = useNavigate()
   const [msg, setMessage] = useState("")
@@ -24,6 +24,8 @@ const Dashboard = ({ games, currentUser }) => {
 
   })
  }, [])
+
+
   const handleSelect =(e)=>{
     console.log(games)
     const game = games.find((game, idx)=>{
@@ -31,9 +33,12 @@ const Dashboard = ({ games, currentUser }) => {
           return game._id === e.target.value
         })
         console.log(game)
-    setForm({...form, game_fk : e.target.value, gameName: game.name})
+        console.log(currentUser._id)
+    setForm({...form, id: currentUser.id, game_fk : e.target.value, gameName: game.name})
 
   }
+
+
   const allGames = games.map((element, idx) => {
     return (
       <option onSelect={handleSelect} value={element._id}>
@@ -42,30 +47,50 @@ const Dashboard = ({ games, currentUser }) => {
     );
   });
 
-  // const allAlias = currentUser.games.map((element, idx)=>{
+  const allAlias = currentUser.games.map((element, idx)=>{
 
-  //   const game = games.find((game, idx)=>{
-  //     return element.name = game.name
-  //   })
-  //   return(
-  //     <h3>Game: {game.name}</h3>
-  //   )
-  // })
+ 
+    return(
+      <div style={{border: '1px solid yellow'}}>
+      <h3>Game: {element.gameName}</h3>
+      <h3>Alias: {element.username}</h3>
+      </div>
+    )
+  })
+  
+  const allParties = currentUser.parties.map((element, idx)=>{
+
+ 
+    return(
+      <div style={{border: '1px solid pink'}}>
+      <h3>Party Name: {element.partyName}</h3>
+      <h3>Description: {element.partyDescription}</h3>
+      </div>
+    )
+  })
+  
   
   const handleEditSubmit = async (e) => {
     e.preventDefault();
     setMessage("")
     try{
-
       await axios.put(`${process.env.REACT_APP_SERVER_URL}/users/edit`, form)
       .then(response=>{
         console.log(response.data)
-      })
-      setForm({
-        id: currentUser.id,
-        game_fk: "",
-        username: ""
-    
+        // setCurrentUser(response.data.foundUser);
+        setCurrentUser({
+          username: response.data.foundUser.username,
+          id: response.data.foundUser._id,
+          email: response.data.foundUser.email,
+          games: response.data.foundUser.games,
+          parties: response.data.foundUser.parties,
+        });
+        setForm({
+          id: response.data.foundUser.id,
+          game_fk: "",
+          username: ""
+          
+        })
       })
       navigate("/")
       navigate("/dashboard")
@@ -74,14 +99,11 @@ const Dashboard = ({ games, currentUser }) => {
     }
   };
 
-
   return (
     <>
       <div className="header-on-dark">
         <h1>{currentUser.username}'s Dashboard</h1>
         <h3>Email: {currentUser.email}</h3>
-        <h2>All Game Alias</h2>
-        {/* {allAlias} */}
         
         <form action="https://google.ca" onSubmit={handleEditSubmit}>
           {/* <input hidden name="userId" type="text">{currentUser.id}</input> */}
@@ -94,6 +116,9 @@ const Dashboard = ({ games, currentUser }) => {
           <input type="submit" />
         </form>
         {msg ? <h2 style={{color: "red"}}>{msg}</h2> : <></>} 
+        <h2>Online Game Names</h2>
+        {allAlias}
+      {allParties}
       </div>
     </>
   );
