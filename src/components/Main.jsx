@@ -6,18 +6,16 @@ export default function Main({currentParty, setCurrentParty, currentGame, setCur
     // const [currentParty, setCurrentParty] = useState(null)
   return (
     <>
-      {currentGame.name ? (
-        <div className="navbar-party">
+      {currentGame.name ? 
           <Parties
             currentParty={currentParty}
             setCurrentParty={setCurrentParty}
             currentGame={currentGame}
-            setCurrentGame={setCurrentGame}            
-          />
-        </div>
-      ) : null}
+            setCurrentGame={setCurrentGame}                   
+          />        
+       : null}
       <div>
-        {currentParty ? <Party currentParty={currentParty} currentUser={currentUser}/> : null }
+        {currentParty ? <Party currentParty={currentParty} setCurrentParty={setCurrentParty} currentUser={currentUser} currentGame={currentGame} /> : null }
       </div>
       
     </>
