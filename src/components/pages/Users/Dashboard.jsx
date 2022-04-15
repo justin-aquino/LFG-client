@@ -24,6 +24,8 @@ const Dashboard = ({setCurrentUser, games, currentUser}) => {
 
   })
  }, [])
+
+
   const handleSelect =(e)=>{
     console.log(games)
     const game = games.find((game, idx)=>{
@@ -32,9 +34,11 @@ const Dashboard = ({setCurrentUser, games, currentUser}) => {
         })
         console.log(game)
         console.log(currentUser._id)
-    setForm({...form, id: currentUser._id, game_fk : e.target.value, gameName: game.name})
+    setForm({...form, id: currentUser.id, game_fk : e.target.value, gameName: game.name})
 
   }
+
+
   const allGames = games.map((element, idx) => {
     return (
       <option onSelect={handleSelect} value={element._id}>
@@ -54,6 +58,17 @@ const Dashboard = ({setCurrentUser, games, currentUser}) => {
     )
   })
   
+  const allParties = currentUser.parties.map((element, idx)=>{
+
+ 
+    return(
+      <div style={{border: '1px solid pink'}}>
+      <h3>Party Name: {element.partyName}</h3>
+      <h3>Description: {element.partyDescription}</h3>
+      </div>
+    )
+  })
+  
   
   const handleEditSubmit = async (e) => {
     e.preventDefault();
@@ -62,40 +77,27 @@ const Dashboard = ({setCurrentUser, games, currentUser}) => {
       await axios.put(`${process.env.REACT_APP_SERVER_URL}/users/edit`, form)
       .then(response=>{
         console.log(response.data)
-        setCurrentUser(response.data.foundUser);
-        setForm({
+        // setCurrentUser(response.data.foundUser);
+        setCurrentUser({
+          username: response.data.foundUser.username,
           id: response.data.foundUser._id,
+          email: response.data.foundUser.email,
+          games: response.data.foundUser.games,
+          parties: response.data.foundUser.parties,
+        });
+        setForm({
+          id: response.data.foundUser.id,
           game_fk: "",
           username: ""
           
         })
       })
-      // await axios.get(`${process.env.REACT_APP_SERVER_URL}/users/${currentUser.id}`)
-      //   .then((res) => {         
-      //     console.log("hello") 
-      //     setCurrentUser(res.data);
-      //   });   
       navigate("/")
       navigate("/dashboard")
-      // setCurrentUser({...currentUser})
     } catch(err){
       setMessage(err.response.data.msg)
     }
   };
-  
-  
-  // useEffect(() => {
-  //   try {
-  //     console.log(`${process.env.REACT_APP_SERVER_URL}/users/${currentUser.id}`)
-  //     axios.get(`${process.env.REACT_APP_SERVER_URL}/users/${currentUser.id}`)
-  //       .then((res) => {         
-  //         console.log("hello") 
-  //         setCurrentUser(res.data);
-  //       });      
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // }, []);
 
   return (
     <>
@@ -116,6 +118,7 @@ const Dashboard = ({setCurrentUser, games, currentUser}) => {
         {msg ? <h2 style={{color: "red"}}>{msg}</h2> : <></>} 
         <h2>Online Game Names</h2>
         {allAlias}
+      {allParties}
       </div>
     </>
   );
