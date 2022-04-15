@@ -17,13 +17,15 @@ import CreateParty from './components/pages/Parties/CreateParty';
 function App() {
   const [currentUser, setCurrentUser] = useState({
     email: '',
-    username: ''
+    username: '',
+    games:[]
   })
   const [users, setUsers] = useState([])
   const [games, setGames] = useState([])
   const [currentGame, setCurrentGame] = useState({})  
   const [currentParty, setCurrentParty] = useState(null)
   
+
   useEffect(() => {
          axios.get(`${process.env.REACT_APP_SERVER_URL}/game`)
       .then(res=>{
@@ -83,7 +85,7 @@ function App() {
           /> */}
           <Route 
             path='/dashboard'
-            element={<Dashboard />}
+            element={<Dashboard games={games} currentUser={currentUser} />}
           />
           <Route
             path="/login"

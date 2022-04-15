@@ -3,7 +3,6 @@ import { useEffect, useState } from "react"
 
 
 export default function CreateParty({ currentGame, currentParty, currentUser }) {
-
     const [form, setForm] = useState({
         gameId: currentGame._id,
         userId: currentUser.id,
