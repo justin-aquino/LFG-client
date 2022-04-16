@@ -1,5 +1,5 @@
 import axios from "axios"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import moment from "moment"
 export default function MessageBoards({currentUser, currentParty}){
     const [form, setForm] = useState({
@@ -19,25 +19,40 @@ export default function MessageBoards({currentUser, currentParty}){
                 .then(resp => {
                     setBoardMsg(resp.data[0].messages)       
                     setBoard(resp.data[0])        
-                    updateScroll()                                             
-                    counter += 1
-                    console.log(counter)
-                    if(counter === 60) return clearInterval(interval)
+                    // updateScroll()                                             
+                    scrollToBottom()
+                    counter += 1                    
+                    if(counter === 15) return clearInterval(interval)
                 })
             })()
-        }, 1000)          
+        }, 3000)          
         
         return () => {            
             clearInterval(interval)
         }
     },[currentParty, fetchMsg])
+
     moment.locale('en')
+    const messageEndRef = useRef(null)
+    
+    const scrollToBottom = () => {
+        messageEndRef.current.scrollIntoView({ behavior : 'smooth'})
+    }
+
     const listChatMsg = boardMsg.map((element, idx) => {
         return (
             <>
-            <div className={currentUser.id===element.userId ? "message-container chat-user-color" : "message-container" } id={`key-${idx}`}>
+            <div className={currentUser.id===element.userId ? "message-container chat-user-color" : "message-container" } id={`key-${idx}`} ref={messageEndRef}>
              <span className='chat-user'><small>{moment(element.createdAt).format('HH:mm d MMM yyyy')}</small></span>
-             <span className='chat-user'><p>{element.userName} said:</p></span>
+             <span className='chat-user'><p>
+                 {
+                     currentUser.id===element.userId
+                     ?
+                     `You `
+                     :
+                    `${element.userName}` 
+                 }
+                 said:</p></span>
              <p>{element.message}</p>
             </div>            
             <hr />
@@ -49,14 +64,15 @@ export default function MessageBoards({currentUser, currentParty}){
         console.log(form)
         await axios.put(`${process.env.REACT_APP_SERVER_URL}/board/${board._id}`, form)
         .then(resp => {
-            setFetchMsg(!fetchMsg)         
-            updateScroll()                    
+            setFetchMsg(!fetchMsg)                     
+            scrollToBottom()                 
         })
     }
-    function updateScroll(){
-        var element = document.getElementById("msg");
-        element.scrollTop = element.scrollHeight + 100;
-    }
+    // function updateScroll(){
+    //     let element = document.getElementById("msg");
+    //     element.scrollTop = element.scrollHeight + 100;
+    //     // element.scrollIntoView({behavior:'smooth', block:'center'})
+    // }
 
     return(
         <>
