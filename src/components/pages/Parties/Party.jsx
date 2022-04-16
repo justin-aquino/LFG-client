@@ -11,10 +11,20 @@ function Party ({
   currentParty,
   setCurrentParty,
   currentUser,
+  setCurrentUser,
   currentGame,
   refresher,
   setRefresher
 }) {
+
+  const filteredMember = currentParty.members.filter(member => {
+    return member.userId === currentUser.id
+  })
+
+  console.log(filteredMember[0].userId, currentUser.id)
+  // console.log(currentUser)
+
+  
   const [selectedComponent, setSelectedComponent] = useState('0')
   useEffect(() => {
     setSelectedComponent('0')
@@ -86,8 +96,12 @@ function Party ({
         <Members
           currentParty={currentParty}
           setCurrentParty={setCurrentParty}
+          currentUser={currentUser}
+          setCurrentUser={setCurrentUser} //added by Justin
         />
         <Requests
+          currentUser={currentUser}
+          setCurrentUser={setCurrentUser}
           currentParty={currentParty}
           setCurrentParty={setCurrentParty}
         />
