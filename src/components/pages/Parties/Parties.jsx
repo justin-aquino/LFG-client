@@ -2,10 +2,9 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-export default function Parties({ currentGame, setCurrentGame, currentParty, setCurrentParty, refresher, setRefresher}) {
-  const [currentParties, setCurrentParties] = useState([]);
-  
+export default function Parties({ parties, search, setSearch, currentParties, setCurrentParties, currentGame, setCurrentGame, currentParty, setCurrentParty, refresher, setRefresher}) {
 
+  
   useEffect(() => {
     try {
       axios.get(`${process.env.REACT_APP_SERVER_URL}/party/${currentGame._id}`)
@@ -32,6 +31,10 @@ export default function Parties({ currentGame, setCurrentGame, currentParty, set
   <>
     <div className="navbar-party">    
     <div className='header-on-dark'><h1>{currentGame.name}</h1></div>
+    <div style={{textAlign: "center"}}>
+      <h4 style={{marginBottom: 0}}>Search parties</h4>
+      <input type="text" value={search} onChange={(e)=> setSearch(e.target.value)}/>
+    </div>
     <fieldset>
     <legend><h2>Parties</h2></legend>
     {listParties}
