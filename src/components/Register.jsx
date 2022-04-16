@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import axios from 'axios'
 import jwt_decode from 'jwt-decode'
-import { Navigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 
 export default function Register ({ currentUser, setCurrentUser, setUsers }) {
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     username: '',
     email: '',
@@ -31,6 +32,7 @@ export default function Register ({ currentUser, setCurrentUser, setUsers }) {
         const decoded = jwt_decode(token)
         // log the user in
         setCurrentUser(decoded)
+        navigate('/dashboard');
         return axios.get(`${process.env.REACT_APP_SERVER_URL}/users`)
         .then(response => setUsers(response.data))        
       } else {

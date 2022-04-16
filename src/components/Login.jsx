@@ -45,7 +45,8 @@ export default function Login({ currentUser, setCurrentUser }) {
   if (currentUser) return <Navigate to="/" />
   return (
        <div className="user-forms-card">
-          <h1>Sign In</h1>
+          <h1 style={{marginBottom: 0}}>Sign In</h1>
+          <h5 style={{margin:0}}>sign in required to view parties</h5>
           {/* <h5 className="error-msg">{msg ? `${msg}` : ""}</h5> */}
         <form onSubmit={handleFormSubmit}>
           {/* Email Input */}

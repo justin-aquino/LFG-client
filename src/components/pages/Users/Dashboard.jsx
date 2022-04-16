@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Dashboard = ({ setCurrentUser, games, currentUser }) => {
@@ -87,7 +87,7 @@ const Dashboard = ({ setCurrentUser, games, currentUser }) => {
     
     const allParties = currentUser.parties.map((element, idx) => {
       return (
-        <div style={{ border: '1px solid pink' }}>
+        <div key={`party-id-${idx}`} style={{ border: '1px solid pink' }}>
           <h3>Party Name: {element.partyName}</h3>
           <h3>Description: {element.partyDescription}</h3>
           <h3>Game: {element.gameName}</h3>
