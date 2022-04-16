@@ -47,11 +47,12 @@ function Party ({
         <div className='header-on-dark'>
           <h1>{currentParty.partyName} </h1>
         </div>
-        <h3>Details : </h3> 
-        <p>
-          {currentParty.description}
-        </p>
-        <div>
+        <div className='menu-holder'>
+          {currentUser ? (
+            <Link to='' onClick={() => setSelectedComponent('1')}>
+              Join this party
+            </Link>
+          ) : null}
         {currentUser ? (
           <Link to='' onClick={() => setSelectedComponent('2')}>
             Edit Party
@@ -62,12 +63,9 @@ function Party ({
             Delete Party
           </Link>
         ) : null}
-        {currentUser ? (
-          <Link to='' onClick={() => setSelectedComponent('1')}>
-            Join this party
-          </Link>
-        ) : null}
         </div>
+        <h3>Details : </h3> 
+        {currentParty.description}        
         {selectedComponent === '1' ? (
           <RequestForm
             currentParty={currentParty}
