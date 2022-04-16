@@ -26,9 +26,9 @@ export default function CreateParty ({currentGame, setCurrentUser, currentUser, 
         e.preventDefault()
         // console.log(e.target.value)
        await axios.post(`${process.env.REACT_APP_SERVER_URL}/party`, form)
-          .then(response => {                        
-            setMessage('Party created successfully!')
-            setCurrentUser({...currentUser, parties: response.data.foundUsers})
+          .then(response => {
+            setCurrentUser({...currentUser, parties: response.data.foundUser.parties})
+            console.log(response.data.foundUser.parties)
           })
   }
     

@@ -31,7 +31,7 @@ function App() {
   useEffect(() => {
          axios.get(`${process.env.REACT_APP_SERVER_URL}/game`)
       .then(res=>{
-        console.log(res.data)
+        // console.log(res.data)
         setGames(res.data)
       })
 
@@ -104,6 +104,7 @@ function App() {
           <Route
               path="/party"
               element={<CreateParty currentGame={currentGame} currentUser={currentUser} currentParty={currentParty} setCurrentParty={setCurrentParty} setCurrentUser={setCurrentUser} />}
+
           />
           <Route
               path="/edit-party"

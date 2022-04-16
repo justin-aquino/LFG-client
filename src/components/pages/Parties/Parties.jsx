@@ -22,7 +22,7 @@ export default function Parties({ currentGame, setCurrentGame, currentParty, set
   
   const listParties = currentParties.map((element, idx) => {
     return (      
-        <div>      
+        <div key={`part-id-${idx}`}>      
         <Link to='' onClick={() => handlePartySelect(element)} key={`${element.name}-part-${idx}`}>{element.partyName}</Link>
       </div>
     );
