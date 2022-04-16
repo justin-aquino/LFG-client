@@ -1,7 +1,14 @@
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
-export default function Requests ({ currentParty, setCurrentParty }) {
+export default function Requests ({ currentParty, setCurrentParty, currentUser, setCurrentUser }) {
+
+  const filteredMember = currentParty.members.filter(member => {
+    return member.userId === currentUser.id
+  })
+
+  console.log(filteredMember[0])
+
   const deleteRequest = async request => {
     console.table(request)
     const form = {
@@ -37,19 +44,25 @@ export default function Requests ({ currentParty, setCurrentParty }) {
   if (currentParty.requests) {
     const listRequest = currentParty.requests.map((element, idx) => {        
       return (
-
         <>
         <div className='name-list' id={`requestID-${idx}`}>
-          <span className='tooltip left' data-text={element.message}> {element.userName} </span>           
-          <Link to='' onClick={() => {approveRequest(element)}}>{' '}Approve{' '}</Link>|
-          <Link to='' onClick={() => {deleteRequest(element)}}>{' '}Deny{' '}</Link>          
+          <span className='tooltip left' data-text={element.message}> {element.userName} - </span>  
+          {
+            filteredMember[0].admin === true ? //this is always index zero, because filteredMember array contains only 1 object.
+            <>
+              <Link to='' onClick={() => {approveRequest(element)}}>{' '}Approve{' '}</Link>|
+              <Link to='' onClick={() => {deleteRequest(element)}}>{' '}Deny{' '}</Link>
+            </>
+            :
+            <span> Status: pending </span>
+          }                
           </div>
         </>
       )
     })
     return (
       <>
-        <h3>Requests</h3>
+        <h3>Join Requests</h3>
         {listRequest}
       </>
     )    
