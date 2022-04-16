@@ -103,7 +103,8 @@ function App() {
           />          
           <Route
               path="/party"
-              element={<CreateParty setCurrentUser={setCurrentUser} currentGame={currentGame} currentUser={currentUser} currentParty={currentParty} setCurrentParty={setCurrentParty} />}
+              element={<CreateParty currentGame={currentGame} currentUser={currentUser} currentParty={currentParty} setCurrentParty={setCurrentParty} setCurrentUser={setCurrentUser} />}
+
           />
           <Route
               path="/edit-party"

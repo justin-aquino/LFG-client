@@ -5,6 +5,7 @@ import RequestForm from './RequestForm'
 import { useEffect, useState } from 'react'
 import EditParty from './EditParty'
 import axios from 'axios'
+import MessageBoards from './MessageBoards'
 
 function Party ({
   currentParty,
@@ -39,24 +40,24 @@ function Party ({
         })
     } catch (error) {}
   }
-
+  
   return (
     <>
       <div className='party-container'>
         <div className='header-on-dark'>
-          <h1>{currentParty.partyName} Party</h1>
+          <h1>{currentParty.partyName} </h1>
         </div>
         <h3>Details : </h3> 
         <p>
           {currentParty.description}
         </p>
-
-        {currentUser.id == filteredMember[0].userId ? (
+        <div>
+        {currentUser ? (
           <Link to='' onClick={() => setSelectedComponent('2')}>
             Edit Party
           </Link>
         ) : null}
-        {currentUser.id == filteredMember[0].userId ? (
+        {currentUser ? (
           <Link to='' onClick={() => handleDeleteParty()}>
             Delete Party
           </Link>
@@ -66,6 +67,7 @@ function Party ({
             Join this party
           </Link>
         ) : null}
+        </div>
         {selectedComponent === '1' ? (
           <RequestForm
             currentParty={currentParty}
@@ -88,6 +90,8 @@ function Party ({
             setRefresher={setRefresher}
           />
         ) : null}
+        
+      </div>
       <div className='party-member-container'>
         <Members
           currentParty={currentParty}
@@ -102,8 +106,8 @@ function Party ({
           setCurrentParty={setCurrentParty}
         />
       </div>
-      </div>
-      <div className='message-footer'>message footer</div>
+
+      <MessageBoards currentUser={currentUser} currentParty={currentParty} />
     </>
   )
 }

@@ -25,7 +25,8 @@ export default function EditParty({ currentGame, currentParty, setCurrentParty, 
 
     return (
 
-        <div className='party-forms-card'>
+        <div className='box stack-top'>
+            <div className="new-form">
             <h3>Edit this Party!</h3>
             <form onSubmit={handleSubmit}>
                 <p>
@@ -82,6 +83,7 @@ export default function EditParty({ currentGame, currentParty, setCurrentParty, 
                 <button type='submit' onClick={()=>setSelectedComponent('0')}>Close</button>
             </form>
             <p>{message ? `Party updated!` : null}</p>
+            </div>
         </div>
     )
 }
