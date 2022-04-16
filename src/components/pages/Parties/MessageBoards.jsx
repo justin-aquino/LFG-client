@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
+import moment from "moment"
 export default function MessageBoards({currentUser, currentParty}){
     const [form, setForm] = useState({
         message: "",
@@ -10,7 +11,8 @@ export default function MessageBoards({currentUser, currentParty}){
     const [board, setBoard] = useState(null)       
     const [fetchMsg, setFetchMsg] = useState(false)    
     
-    useEffect(()=>{          
+    useEffect(()=>{     
+        let counter = 0     
         let interval = setInterval(()=> {
             (async ()=>{
                 axios.get(`${process.env.REACT_APP_SERVER_URL}/board/${currentParty._id}`)
@@ -18,21 +20,27 @@ export default function MessageBoards({currentUser, currentParty}){
                     setBoardMsg(resp.data[0].messages)       
                     setBoard(resp.data[0])        
                     updateScroll()                                             
+                    counter += 1
+                    console.log(counter)
+                    if(counter === 60) return clearInterval(interval)
                 })
             })()
-        }, 3000)          
+        }, 1000)          
+        
         return () => {            
             clearInterval(interval)
         }
     },[currentParty, fetchMsg])
-
+    moment.locale('en')
     const listChatMsg = boardMsg.map((element, idx) => {
         return (
             <>
             <div className={currentUser.id===element.userId ? "message-container chat-user-color" : "message-container" } id={`key-${idx}`}>
-             <span className='chat-user'>{element.userName} said:</span>
+             <span className='chat-user'><small>{moment(element.createdAt).format('HH:mm d MMM yyyy')}</small></span>
+             <span className='chat-user'><p>{element.userName} said:</p></span>
              <p>{element.message}</p>
             </div>            
+            <hr />
             </>
         )
     })

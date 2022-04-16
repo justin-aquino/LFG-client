@@ -41,10 +41,10 @@ main {
   position: fixed;
   left: 140px;
   top:0;
-  background-color: var(--blue);
-  /* border: .1rem solid  white; */
+  background-color: var(--blue);  
   overflow: auto;
 }
+
 h1, h2, h3, h4{
 font-weight: var(--bold);
 }
@@ -223,7 +223,6 @@ font-weight: var(--bold);
   text-shadow: 0 0 10px var(--amber);
 }
 
-
 .container-main {
  color: var(--blue);
  padding: 0 0 0 10px;
@@ -314,12 +313,10 @@ article img {
   max-width: 100%;
 }
 .header-on-dark {
-  /* padding: 15px; */
-  padding-left: 15px;
+  /* padding: 15px; */  
   color: var(--white);
 }
-.header-on-light {
-  padding: 15px;
+.header-on-light {  
   color: var(--gray);
 }
 fieldset {
@@ -332,7 +329,7 @@ fieldset {
   color: var(--white);  
   background-color: var(--blue);
   /* border-bottom: .1rem dotted var(--white); */
-  width: 100%;
+  width: 100vw;
   overflow-x:hidden;
   overflow-y: hidden;
   display: flex;
@@ -340,6 +337,8 @@ fieldset {
   flex-direction: column;
   padding: 0px 15px 0px 15px;
   z-index: 1;
+  height: 40vh;  
+  min-height: 300px;
 }
 .party-container a {  
   color: var(--white);  
@@ -439,8 +438,7 @@ fieldset {
   padding: 0 10px 0 5px;  
   position: fixed;
   bottom: 0;  
-  height: 140px;
-  
+  height: 140px;  
   min-height: 140px;
   flex-direction: column;
   justify-content:flex-start;
@@ -474,39 +472,38 @@ fieldset {
   color: var(--white);
   text-align: left;
   max-height: 60%;
-  width: 560px;
+  width: 100vw;
   min-width:560px; 
   padding: 5px;
   position: fixed;
   bottom:140px;
-  z-index: -1;
-  border-top: .05 solid var(--white);  
+  z-index: 0;
+  border-top: .05 solid var(--white);    
   overflow-y: scroll;  
-  
 }
-.msg-disp::-webkit-scrollbar {
+/* .msg-disp::-webkit-scrollbar {
   display: none;
 }
 .msg-disp {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-}
+  -ms-overflow-style: none;
+  scrollbar-width: none; 
+} */
 .message-container {
   width: 100%;
-  background-color: var(--emerald);
+  background-color: var(--blue);
   padding: 5px;
   margin: 5px;
   inline-size: 550px;
   overflow-wrap: break-word;
   hyphens: manual;
-  border-radius: 5px;
+  color: var(--white);  
 }
 .chat-user {
   font-size: 12px;;
 }
 .chat-user-color {
-  background-color: var(--amber);
-  color: var(--blue);
+  background-color: var(--blue);
+  color: var(--amber);
 }
 .box{
   position:fixed;
@@ -528,4 +525,20 @@ fieldset {
   border-radius: 10px;
   padding: 10px;  
   margin: 20px  
+}
+.menu-holder {
+  width: 400px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  gap: 20px;  
+  flex-direction: row;   
+}
+hr {
+  width: 100%;
+  color: rgba(255,255,255,.6);
+}
+button {
+  margin-left: 2px;
+  width: 60px;
 }
