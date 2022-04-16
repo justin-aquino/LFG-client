@@ -32,15 +32,6 @@ export default function CreateParty ({currentGame, setCurrentUser, currentUser, 
             console.log(response.data.foundUser.parties)
             navigate('/');
           })
-      const boardForm = {
-      partyId : currentParty._id
-    }
-    
-    await axios.post(`${process.env.REACT_APP_SERVER_URL}/board`,boardForm)
-    .then(resp => {
-      setMessage('Party created successfully!')
-      navigate('/');
-    })
   }
     
     return (
