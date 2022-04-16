@@ -37,7 +37,9 @@ export default function RequestForm ({currentParty,setCurrentParty,
   console.log(currentParty)
   return (
     <>
-      <div className='party-forms-card'>
+      <div className='box stack-top'>
+      <div className="new-form">
+
         {!requests ? (
           <>
             <h3>Request to join {currentParty.partyName}</h3>
@@ -58,6 +60,7 @@ export default function RequestForm ({currentParty,setCurrentParty,
         ) : (
           <h3>{requests}</h3>
         )}
+        </div>
       </div>
     </>
   )
