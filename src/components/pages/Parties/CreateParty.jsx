@@ -1,10 +1,11 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { Navigate } from "react-router-dom"
+import { useNavigate } from 'react-router-dom';
 
 
 
 export default function CreateParty ({currentGame, setCurrentUser, currentUser, currentParty, setCurrentParty}) {  
+  const navigate = useNavigate();
   const [form, setForm] = useState({
         gameId: currentGame._id,
         gameName: currentGame.name,
@@ -26,9 +27,10 @@ export default function CreateParty ({currentGame, setCurrentUser, currentUser, 
         e.preventDefault()
         // console.log(e.target.value)
        await axios.post(`${process.env.REACT_APP_SERVER_URL}/party`, form)
-          .then(response => {                        
-            setMessage('Party created successfully!')
-            setCurrentUser({...currentUser, parties: response.data.foundUsers})
+          .then(response => {
+            setCurrentUser({...currentUser, parties: response.data.foundUser.parties})
+            console.log(response.data.foundUser.parties)
+            navigate('/');
           })
   }
     

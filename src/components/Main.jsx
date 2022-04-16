@@ -4,10 +4,13 @@ import { useState } from 'react';
 
 export default function Main({currentParty, setCurrentParty, currentGame, setCurrentGame, currentUser, refresher, setRefresher}) {
     // const [currentParty, setCurrentParty] = useState(null)
+    const [currentParties, setCurrentParties] = useState([]);
   return (
     <>
       {currentGame.name ? 
           <Parties
+            currentParties={currentParties}
+            setCurrentParties={setCurrentParties}
             currentParty={currentParty}
             setCurrentParty={setCurrentParty}
             currentGame={currentGame}
