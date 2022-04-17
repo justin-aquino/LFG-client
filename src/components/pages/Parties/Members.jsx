@@ -11,9 +11,9 @@ export default function Members ({ currentParty, setCurrentParty, currentUser, s
 
   // console.log(currentUser.id, currentParty.members[2].userId)
 
-  const filteredMember = currentParty.members.filter(member => {
-    return member.userId === currentUser.id
-  })
+  // const filteredMember = currentParty.members.filter(member => {
+  //   return member.userId === currentUser.id
+  // })
 
   // console.log(filteredMember)
 
@@ -40,15 +40,15 @@ export default function Members ({ currentParty, setCurrentParty, currentUser, s
       return (
         <div key={`member-id-${idx}`} className="name-list">
             {member.userName}
-            {
+            {/* {
               filteredMember[0].admin ? //this is always index zero, because filteredMember array contains only 1 object.
-              <>
+              <> */}
                 <span onClick={() => {makeAdmin(member)}}> ✅</span>
                 <span onClick={() => {kickMember(member)}}>❌</span>
-              </>
+              {/* </>
               :
               null
-            }
+            } */}
         </div>
       ) 
     }

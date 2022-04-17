@@ -17,12 +17,12 @@ function Party ({
   setRefresher
 }) {
 
-  const filteredMember = currentParty.members.filter(member => {
-    return member.userId === currentUser.id
-  })
+  // const filteredMember = currentParty.members.filter(member => {
+  //   return member.userId === currentUser.id
+  // })
 
-  console.log(filteredMember[0].userId, currentUser.id)
-  // console.log(currentUser)
+  // console.log(filteredMember[0].userId, currentUser.id)
+  // // console.log(currentUser)
 
   
   const [selectedComponent, setSelectedComponent] = useState('0')

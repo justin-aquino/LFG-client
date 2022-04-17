@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom'
 
 export default function Requests ({ currentParty, setCurrentParty, currentUser, setCurrentUser }) {
 
-  const filteredMember = currentParty.members.filter(member => {
-    return member.userId === currentUser.id
-  })
+  // const filteredMember = currentParty.members.filter(member => {
+  //   return member.userId === currentUser.id
+  // })
 
-  console.log(filteredMember[0])
+  // console.log(filteredMember[0])
 
   const deleteRequest = async request => {
     console.table(request)
@@ -47,15 +47,15 @@ export default function Requests ({ currentParty, setCurrentParty, currentUser, 
         <>
         <div className='name-list' id={`requestID-${idx}`}>
           <span className='tooltip left' data-text={element.message}> {element.userName} - </span>  
-          {
+          {/* {
             filteredMember[0].admin === true ? //this is always index zero, because filteredMember array contains only 1 object.
-            <>
+            <> */}
               <Link to='' onClick={() => {approveRequest(element)}}>{' '}Approve{' '}</Link>|
               <Link to='' onClick={() => {deleteRequest(element)}}>{' '}Deny{' '}</Link>
-            </>
+            {/* </>
             :
             <span> Status: pending </span>
-          }                
+          }                 */}
           </div>
         </>
       )
