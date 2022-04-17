@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 import Login from "./components/Login"
-import Games from './components/Games';
 import Dashboard from './components/pages/Users/Dashboard';
 import Register from "./components/Register"
 import SearchGames from './components/pages/Games/SearchGames';
@@ -74,10 +73,6 @@ function App() {
             path='/games'
             element={<Games games={games} setGames={setGames} />}
           /> */}
-          <Route 
-            path='/games'
-            element={<Games />}
-          />
           <Route 
             path='/games/browse'
             element={<SearchGames />}

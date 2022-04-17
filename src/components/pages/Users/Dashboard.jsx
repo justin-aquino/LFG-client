@@ -13,13 +13,13 @@ const Dashboard = ({ setCurrentUser, games, currentUser }) => {
     gameName: ''
   })
 
-  // useEffect(() => {
-  //   setForm({
-  //     id: currentUser.id,
-  //     game_fk: '',
-  //     username: '',
-  //   });
-  // }, []);
+  useEffect(() => {
+    setForm({
+      id: currentUser.id,
+      game_fk: '',
+      username: '',
+    });
+  }, []);
 
   const handleSelect = e => {
     console.log(games)
@@ -54,14 +54,14 @@ const Dashboard = ({ setCurrentUser, games, currentUser }) => {
     )
   })
 
-  const handleEditSubmit = async e => {
-    e.preventDefault()
-    setMessage('')
+  const handleEditSubmit = async (e) => {
+    e.preventDefault();
+    setMessage('');
     try {
       await axios
         .put(`${process.env.REACT_APP_SERVER_URL}/users/edit`, form)
-        .then(response => {
-          console.log(response.data)
+        .then((response) => {
+          console.log(response.data);
           // setCurrentUser(response.data.foundUser);
           setCurrentUser({
             username: response.data.foundUser.username,
