@@ -129,15 +129,15 @@ const Dashboard = ({ setCurrentUser, games, currentUser }) => {
 
         {/* start cards display */}
         <div className='dashboard-container-det'>
-        <div className='header-on-dark'>
-          <h3>Your games</h3>
-        </div>
-        <div className='card-container'>{allAlias}</div>
+          <div className='header-on-dark'>
+            <h3>Your games</h3>
+          </div>
+          <div className='card-container'>{allAlias}</div>
 
-        <div className='header-on-dark'>
-          <h3>Your Parties</h3>
-        </div>
-        <div className='card-container'>{allParties}</div>
+          <div className='header-on-dark'>
+            <h3>Your Parties</h3>
+          </div>
+          <div className='card-container'>{allParties}</div>
         </div>
         {/* end cards display */}
         
