@@ -36,7 +36,8 @@ export default function CreateParty ({currentGame, setCurrentUser, currentUser, 
     
     return (
       
-        <div className='party-forms-card'>
+        <div className='box stack-top'>
+          <div className="new-form">
         <h1>Create a Party!</h1>          
             <form onSubmit={handleSubmit}>
             <p>
@@ -92,6 +93,7 @@ export default function CreateParty ({currentGame, setCurrentUser, currentUser, 
               <button type='submit'>Submit</button>
             </form>
             <p>{message}</p>
+            </div>
           </div>
     )
 }

@@ -1,6 +1,6 @@
 import Requests from './Requests'
 import Members from './Members'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import RequestForm from './RequestForm'
 import { useEffect, useState } from 'react'
 import EditParty from './EditParty'
@@ -34,6 +34,8 @@ function Party({
     setSelectedComponent('0')
   }, [currentParty])
 
+  if (!currentUser) return <Navigate to='/login' />
+  
   const handleDeleteParty = async () => {
     try {
       await axios

@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-export default function Parties({ parties, currentParties, setCurrentParties, currentGame, setCurrentGame, currentParty, setCurrentParty, refresher, setRefresher}) {
+export default function Parties({ parties, currentParties, setCurrentParties, currentGame, setCurrentGame, currentParty, setCurrentParty, refresher, setRefresher, currentUser}) {
 
   const [search, setSearch] = useState("")
   useEffect(() => {
@@ -50,7 +50,13 @@ export default function Parties({ parties, currentParties, setCurrentParties, cu
     </fieldset>
     </div>
     <div className='navbar-party-footer'>
-    <p><Link to='/party'>Create a party</Link></p>
+    {
+      currentUser
+      ?
+      <p><Link to='/party'>Create a party</Link></p>
+      :
+      null
+    }
     </div>  
   </>  
   

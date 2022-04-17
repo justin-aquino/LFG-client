@@ -26,6 +26,7 @@ export default function Main({currentParty, setCurrentParty, currentGame, setCur
             setCurrentGame={setCurrentGame}                   
             refresher={refresher}
             setRefresher={setRefresher}
+            currentUser={currentUser}
           />        
           
        : null}
