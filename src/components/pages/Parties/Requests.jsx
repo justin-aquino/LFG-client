@@ -1,13 +1,20 @@
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
-export default function Requests ({ currentParty, setCurrentParty, currentUser, setCurrentUser }) {
+export default function Requests({ currentParty, setCurrentParty, currentUser, setCurrentUser }) {
 
-  // const filteredMember = currentParty.members.filter(member => {
-  //   return member.userId === currentUser.id
-  // })
+  //currentParty.member -> check if the current user is a member of the party
+  // if part of the part(member) -> check if that member is an admin or not
+  // added by jon
+  const filteredMember = currentParty.members.filter(member => {
+    if (member.userId === currentUser.id)
+      return member
+  })
 
-  // console.log(filteredMember[0])
+  console.log('currentUser', currentUser)
+  console.log('request filtered member', filteredMember)
+  console.log('request currentparty', currentParty)
+  console.log('request currentparty member', currentParty.members)
 
   const deleteRequest = async request => {
     console.table(request)
@@ -20,11 +27,11 @@ export default function Requests ({ currentParty, setCurrentParty, currentUser, 
     }
     try {
       await axios
-        .put(`${process.env.REACT_APP_SERVER_URL}/party/${currentParty._id}/decline`,form)
+        .put(`${process.env.REACT_APP_SERVER_URL}/party/${currentParty._id}/decline`, form)
         .then(response => {
           setCurrentParty(response.data.foundParty)
         })
-    } catch (error) {}
+    } catch (error) { }
   }
   const approveRequest = async request => {
     console.log(request)
@@ -35,27 +42,35 @@ export default function Requests ({ currentParty, setCurrentParty, currentUser, 
     }
     try {
       await axios
-        .put(`${process.env.REACT_APP_SERVER_URL}/party/${currentParty._id}/approve`,form)
+        .put(`${process.env.REACT_APP_SERVER_URL}/party/${currentParty._id}/approve`, form)
         .then(response => {
           setCurrentParty(response.data.foundParty)
         })
-    } catch (error) {}
+    } catch (error) { }
   }
   if (currentParty.requests) {
-    const listRequest = currentParty.requests.map((element, idx) => {        
+    const listRequest = currentParty.requests.map((element, idx) => {
       return (
         <>
-        <div className='name-list' id={`requestID-${idx}`}>
-          <span className='tooltip left' data-text={element.message}> {element.userName} - </span>  
-          {/* {
-            filteredMember[0].admin === true ? //this is always index zero, because filteredMember array contains only 1 object.
-            <> */}
-              <Link to='' onClick={() => {approveRequest(element)}}>{' '}Approve{' '}</Link>|
-              <Link to='' onClick={() => {deleteRequest(element)}}>{' '}Deny{' '}</Link>
-            {/* </>
-            :
-            <span> Status: pending </span>
-          }                 */}
+          <div className='name-list' id={`requestID-${idx}`}>
+            <span className='tooltip left' data-text={element.message}> {element.userName} - </span>
+            {
+              filteredMember.length === 0 ? //non-members can see their requests as pending (jon)
+                <span> Status: pending </span>
+                :
+                filteredMember.length != 0 && filteredMember[0].admin === true ? //if you are a member, and an admin as well (jon)
+                  <>
+                    <Link to='' onClick={() => { approveRequest(element) }}>{' '}Approve{' '}</Link>|
+                    <Link to='' onClick={() => { deleteRequest(element) }}>{' '}Deny{' '}</Link>
+                  </>
+                  :
+                  filteredMember.length != 0 && filteredMember[0].admin === false ? // if you are a member, and not an admin (jon)
+                    <span> Status: pending </span>
+                    :
+                    null
+
+            }
+
           </div>
         </>
       )
@@ -65,8 +80,8 @@ export default function Requests ({ currentParty, setCurrentParty, currentUser, 
         <h3>Join Requests</h3>
         {listRequest}
       </>
-    )    
-  } else {    
+    )
+  } else {
     return <>There are no pending request.</>
   }
 }

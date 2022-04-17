@@ -7,7 +7,7 @@ import EditParty from './EditParty'
 import axios from 'axios'
 import MessageBoards from './MessageBoards'
 
-function Party ({
+function Party({
   currentParty,
   setCurrentParty,
   currentUser,
@@ -16,15 +16,19 @@ function Party ({
   refresher,
   setRefresher
 }) {
+  // if filteredMember != 0, currentUser is a member of the party (jon)
+  const filteredMember = currentParty.members.filter(member => {
+    if (member.userId === currentUser.id)
+      return member
+  })
 
-  // const filteredMember = currentParty.members.filter(member => {
-  //   return member.userId === currentUser.id
-  // })
+  // if filteredRequest != 0, currentUser has already sent a request (jon)
+  const filteredRequest = currentParty.requests.filter(request => {
+    if (request.userId === currentUser.id)
+      return request
+  })
 
-  // console.log(filteredMember[0].userId, currentUser.id)
-  // // console.log(currentUser)
 
-  
   const [selectedComponent, setSelectedComponent] = useState('0')
   useEffect(() => {
     setSelectedComponent('0')
@@ -38,9 +42,9 @@ function Party ({
           setCurrentParty(null)
           setRefresher(!refresher)
         })
-    } catch (error) {}
+    } catch (error) { }
   }
-  
+
   return (
     <>
       <div className='party-container'>
@@ -48,24 +52,26 @@ function Party ({
           <h1>{currentParty.partyName} </h1>
         </div>
         <div className='menu-holder'>
-          {currentUser ? (
-            <Link to='' onClick={() => setSelectedComponent('1')}>
-              Join this party
-            </Link>
-          ) : null}
-        {currentUser ? (
-          <Link to='' onClick={() => setSelectedComponent('2')}>
-            Edit Party
-          </Link>
-        ) : null}
-        {currentUser ? (
-          <Link to='' onClick={() => handleDeleteParty()}>
-            Delete Party
-          </Link>
-        ) : null}
+          {filteredMember.length == 0 && filteredRequest.length == 0 ? // if the user doesn't belong to the party and hasn't sent a request (jon)
+            <>
+              <Link to='' onClick={() => setSelectedComponent('1')}>
+                Join this party
+              </Link>
+            </>
+            : filteredMember.length != 0 && filteredMember[0].admin === true ? // if the user is a member and an admin (jon)
+              <>
+                <Link to='' onClick={() => setSelectedComponent('2')}>
+                  Edit Party
+                </Link>
+                <Link to='' onClick={() => handleDeleteParty()}>
+                  Delete Party
+                </Link>
+              </>
+              : null
+          }
         </div>
-        <h3>Details : </h3> 
-        {currentParty.description}        
+        <h3>Details : </h3>
+        {currentParty.description}
         {selectedComponent === '1' ? (
           <RequestForm
             currentParty={currentParty}
@@ -88,7 +94,7 @@ function Party ({
             setRefresher={setRefresher}
           />
         ) : null}
-        
+
       </div>
       <div className='party-member-container'>
         <Members
