@@ -16,7 +16,6 @@ function Party({
   refresher,
   setRefresher
 }) {
-
   // if filteredMember != 0, currentUser is a member of the party (jon)
   const filteredMember = currentParty.members.filter(member => {
     if (member.userId === currentUser.id)
@@ -28,6 +27,7 @@ function Party({
     if (request.userId === currentUser.id)
       return request
   })
+
 
   const [selectedComponent, setSelectedComponent] = useState('0')
   useEffect(() => {
