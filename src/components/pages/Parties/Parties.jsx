@@ -20,7 +20,7 @@ export default function Parties({ parties, currentParties, setCurrentParties, cu
   }
 
 
-  let filteredParties = currentParties.filter(party => party.partyName.includes(search))
+  let filteredParties = currentParties.filter(party => party.partyName.toLowerCase().trim().includes(search.toLowerCase().trim()))
   
   const listParties = filteredParties.map((element, idx) => {
     return (      
