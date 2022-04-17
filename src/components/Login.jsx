@@ -45,14 +45,17 @@ export default function Login({ currentUser, setCurrentUser }) {
   if (currentUser) return <Navigate to="/" />
   return (
        <div className="user-forms-card">
-          <h1 style={{marginBottom: 0}}>Sign In</h1>
-          <h5 style={{margin:0}}>sign in required to view parties</h5>
+         <h1><button className="lfg-button">Looking for Group</button></h1>
+          <h1 style={{fontWeight: 300,marginTop: 0,marginBottom: 0, fontSize:'20px', color:"white"}}>Sign In</h1>
+          {/* <h5 style={{margin:0}}>sign in required to view parties</h5> */}
           {/* <h5 className="error-msg">{msg ? `${msg}` : ""}</h5> */}
-        <form onSubmit={handleFormSubmit}>
+        <form style={{display: 'flex', flexDirection:"column", justifyContent:"center", alignItems:"center"}} onSubmit={handleFormSubmit}>
           {/* Email Input */}
           <div>
-            <label htmlFor="username">Username :</label>
+            <label hidden htmlFor="username"></label>
             <input
+              style={{paddingLeft: "15px" , borderRadius: '20px', width: '250px'}}
+              placeholder=" enter username"
               type="text"
               id="username"
               onChange={(e) => setForm({ ...form, username: e.target.value })}
@@ -61,8 +64,10 @@ export default function Login({ currentUser, setCurrentUser }) {
           </div>
           <div>
             {/* Password Input */}
-            <label htmlFor="password">Password :</label>
+            <label hidden htmlFor="password"></label>
             <input
+              style={{paddingLeft: "15px" ,borderRadius: '20px', width: '250px'}}
+              placeholder=" enter password"
               type="password"
               id="password"
               onChange={(e) => setForm({ ...form, password: e.target.value })}
@@ -71,16 +76,17 @@ export default function Login({ currentUser, setCurrentUser }) {
             />
           </div>
           <button type="submit" className="enterButton">
-            Login
+            Sign In
           </button>
-          <p>
+          <p style={{fontSize: "14px", color: "white"}}>
             Don't have an account?{" "}
-            <a href="/signup" className="a-tag">
+            <a style={{color: "white"}} href="/signup" className="a-tag">
               Create one
             </a>
           </p>
         </form>
-        <p className="error-message">{msg ? `${msg}` : ''}</p>
+
+        {msg ? <p style={{fontWeight:200, color: "red"}} className="error-message">{msg}</p> : <></>}
       </div>    
   )
 }

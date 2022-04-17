@@ -53,12 +53,14 @@ export default function Register ({ currentUser, setCurrentUser, setUsers }) {
     <>            
     <div className='flex-container'>
       <div className='user-forms-card'>
-      <h1>Register An Account</h1>
-        
+      <h1><button className="lfg-button">Register An Account</button></h1>
+      <h1 style={{fontWeight: 300,marginTop: 0,marginBottom: 0, fontSize:'20px', color:"white"}}>Sign Up</h1>
           <form onSubmit={handleSubmit}>
             <div>
-              <label htmlFor='username'>Username:</label>
+              <label htmlFor='username'></label>
               <input
+                style={{paddingLeft: "15px" , borderRadius: '20px', width: '250px'}}
+                placeholder='enter username'
                 type='text'
                 id='username'
                 value={form.username}
@@ -66,8 +68,10 @@ export default function Register ({ currentUser, setCurrentUser, setUsers }) {
               />
             </div>
             <div>
-              <label htmlFor='email'>Email:</label>
+              <label htmlFor='email'></label>
               <input
+                style={{paddingLeft: "15px" , borderRadius: '20px', width: '250px'}}
+                placeholder='enter email'
                 type='email'
                 id='email'
                 value={form.name}
@@ -76,8 +80,10 @@ export default function Register ({ currentUser, setCurrentUser, setUsers }) {
               />
             </div>
             <div>
-              <label htmlFor='password'>Password:</label>
+              <label htmlFor='password'></label>
               <input
+                style={{paddingLeft: "15px" , borderRadius: '20px', width: '250px'}}
+                placeholder='enter password'
                 type='password'
                 id='password'
                 value={form.password}
@@ -86,17 +92,27 @@ export default function Register ({ currentUser, setCurrentUser, setUsers }) {
               />
             </div>
             <div>
-              <label htmlFor='confirmpassword'>Confirm Password:</label>
+              <label htmlFor='confirmpassword'></label>
               <input
+                style={{paddingLeft: "15px" , borderRadius: '20px', width: '250px'}}
+                placeholder='confirm password'
                 type='password'
                 id='confirmpassword'
                 value={passwordCheck}
                 onChange={e => setPasswordCheck(e.target.value)}                
               />
             </div>
-            <button type='submit'>Submit</button>
+            <button type="submit" className="enterButton">
+            Sign Up
+          </button>
+          <p style={{fontSize: "14px", color: "white"}}>
+            Already have an account?{" "}
+            <a style={{color: "white"}} href="/login" className="a-tag">
+              Login
+            </a>
+            </p>
           </form>
-          <p className='error-message'>{message ? `${message}` : ''}</p>
+          {message ? <p style={{fontWeight:200, color: "red"}} className="error-message">{message}</p> : <></>}
         </div>
         </div>
     </>

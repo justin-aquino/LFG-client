@@ -27,6 +27,7 @@ export default function Main({currentParty, setCurrentParty, currentGame, setCur
             refresher={refresher}
             setRefresher={setRefresher}
           />        
+          
        : null}
       <div>
         {currentParty ? <Party currentParty={currentParty} setCurrentParty={setCurrentParty} currentUser={currentUser} currentGame={currentGame} refresher={refresher} setRefresher={setRefresher} /> : null }
