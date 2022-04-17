@@ -96,8 +96,7 @@ font-weight: var(--bold);
   display: block;  
   font-size: 18px;    
 }
-.navbar-footer a:hover {  
-  /* border-left: 10px solid rgb(248, 137, 33); */
+.navbar-footer a:hover {    
   text-shadow: 0 0 10px var(--amber);
 }
 
@@ -110,8 +109,7 @@ font-weight: var(--bold);
   bottom: 500px;
   left: 0;
   background-color: var(--black);
-  overflow-x: hidden;  
-  overflow-y: scroll;
+  overflow-x: hidden;    
   padding: 0 10px 0 15px;
   font-weight: var(--medium);
   font-size: 16px;
@@ -130,7 +128,6 @@ font-weight: var(--bold);
   scrollbar-width: none;  /* Firefox */
 }
 .navbar-main a {
-  /* padding: 6px 8px 6px 16px; */
   text-decoration: none;
   font-size: 25px;
   color: var(--white);
@@ -139,11 +136,9 @@ font-weight: var(--bold);
   padding: 5px;
   font-weight: var(--medium);  
 }
-.navbar-main a:hover {  
-  /* border-left: 10px solid rgb(248, 137, 33); */
+.navbar-main a:hover {    
   text-shadow: 0 0 10px var(--amber);
 }
-
 
 /* this is the class for the party div */
 .navbar-party {
@@ -270,16 +265,17 @@ font-weight: var(--bold);
   align-items: flex-start;
   flex-direction: column;
   color: var(--white);
-  background-color: var(--blue);
+  /* background-color: var(--blue); */
   padding: 0px 0px 20px 5px;  
   /* border-radius: 20px; */
 }
-input, textarea, label {
+
+input, textarea, label, select {
   border: 0 solid var(--amber); 
   color: rgb(0, 0, 0);  
   padding: 5px;
   border-radius: 2px;
-  margin: 3px;
+  margin: 0px 0px 5px 0px;
   min-width: 200px;
   resize: none;  
   display: block;    
@@ -287,7 +283,7 @@ input, textarea, label {
 }
 .party-forms-card label{
   color: var(--white);
-  border: 0.05rem solid var(--blue);
+  /* border: 0.05rem solid var(--blue); */
 }
 .flex-container {
   display: flex;    
@@ -306,16 +302,27 @@ article{
   flex: 0 0 300px;
   /* margin: 10px; */
   border: 1px solid #ccc;
-  box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
-  max-height: 450px;
+  box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);  
   background-color: var(--amber);
   border-radius: 3px;
-  padding: 5px;
-  max-width: 250px;
+  padding: 10px;
+  max-width: 260px;  
   color: var(--blue);
+  height: 800px;
+  margin: 10px;
+  font-size: 16px;
 }
 article img {
-  max-width: 100%;
+  max-width: 240px;  
+}
+.img-dev{
+  width: 100%;  
+  text-align: center;
+  height:300px;
+}
+.img-dev img{  
+  min-height: 300px;
+  height:300px;
 }
 .header-on-dark {
   /* padding: 15px; */  
@@ -488,13 +495,13 @@ fieldset {
   border-top: .05 solid var(--white);    
   overflow-y: scroll;  
 }
-/* .msg-disp::-webkit-scrollbar {
+.msg-disp::-webkit-scrollbar {
   display: none;
 }
 .msg-disp {
   -ms-overflow-style: none;
   scrollbar-width: none; 
-} */
+}
 .message-container {
   width: 100%;
   background-color: var(--blue);
@@ -549,7 +556,76 @@ button {
   margin-left: 2px;
   width: 60px;
 }
-
+.card-container {
+  display: flex;
+  flex-direction: row;  
+  padding: 5px;
+  justify-content: flex-start;
+  flex-wrap: wrap;    
+  overflow: hidden;
+  height: fit-content;
+  width: 90%;
+}
+.card {
+  width: 200px;
+  min-width: 200px;
+  min-height: 250px;
+  max-height: 250px;
+  color: var(--blue);
+  text-align: left;
+  font-weight: lighter;
+  font-size: 14px;  
+  border: .05rem solid rgb(227, 230, 226);    
+  padding: 10px 10px 10px 10px;
+  background-color: var(--amber);  
+  box-shadow: 1px 5px 5px -2px rgba(44, 44, 44,.6); 
+  margin: 5px;  
+  border-radius: 10px; 
+  background-image: linear-gradient(to bottom, var(--white), rgba(249, 249, 211, 0.8));
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.dashboard-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;  
+  text-align: left;  
+  overflow-x: hidden;
+  background-color: var(--gray);
+}
+.dashboard-container-det {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;  
+  text-align: left;  
+  overflow-x: hidden;
+  padding: 10px;
+  background-color: var(--blue);
+}
+.profile-container {
+  display: flex;  
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;  
+  text-align: left;
+  padding: 20px;
+  min-width: 350px;
+  height: 100%;
+  background-color: var(--gray);
+}
+.dev-container {
+  display: flex;
+  flex-direction: row;  
+  padding: 5px;
+  justify-content: flex-start;
+  flex-wrap: wrap;    
+  overflow: hidden;
+  height: fit-content;
+  width: 100vw;
+}
 .gameName-parties{
   display: flex;
   flex-direction: row;
@@ -569,7 +645,7 @@ button {
   width: 325px;
   font-size:25px;
   font-weight: 600;
-  
+  padding-bottom: 7px;
 }
 
 .enterButton{
@@ -580,4 +656,5 @@ button {
   font-weight: 200;
   color: white;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  margin-bottom: 10px;
 }
