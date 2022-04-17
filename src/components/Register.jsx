@@ -59,7 +59,7 @@ export default function Register ({ currentUser, setCurrentUser, setUsers }) {
             <div>
               <label htmlFor='username'></label>
               <input
-                style={{paddingLeft: "15px" , borderRadius: '20px', width: '250px'}}
+                style={{paddingLeft: "15px" , borderRadius: '20px', width: '250px', height:"40px", marginBottom:"10px"}}
                 placeholder='enter username'
                 type='text'
                 id='username'
@@ -70,7 +70,7 @@ export default function Register ({ currentUser, setCurrentUser, setUsers }) {
             <div>
               <label htmlFor='email'></label>
               <input
-                style={{paddingLeft: "15px" , borderRadius: '20px', width: '250px'}}
+                style={{paddingLeft: "15px" , borderRadius: '20px', width: '250px', height:"40px", marginBottom:"10px"}}
                 placeholder='enter email'
                 type='email'
                 id='email'
@@ -82,7 +82,7 @@ export default function Register ({ currentUser, setCurrentUser, setUsers }) {
             <div>
               <label htmlFor='password'></label>
               <input
-                style={{paddingLeft: "15px" , borderRadius: '20px', width: '250px'}}
+                style={{paddingLeft: "15px" , borderRadius: '20px', width: '250px', height:"40px", marginBottom:"10px"}}
                 placeholder='enter password'
                 type='password'
                 id='password'
@@ -94,7 +94,7 @@ export default function Register ({ currentUser, setCurrentUser, setUsers }) {
             <div>
               <label htmlFor='confirmpassword'></label>
               <input
-                style={{paddingLeft: "15px" , borderRadius: '20px', width: '250px'}}
+                style={{paddingLeft: "15px" , borderRadius: '20px', width: '250px', height:"40px", marginBottom:"10px"}}
                 placeholder='confirm password'
                 type='password'
                 id='confirmpassword'

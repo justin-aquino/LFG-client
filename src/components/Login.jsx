@@ -54,7 +54,7 @@ export default function Login({ currentUser, setCurrentUser }) {
           <div>
             <label hidden htmlFor="username"></label>
             <input
-              style={{paddingLeft: "15px" , borderRadius: '20px', width: '250px'}}
+              style={{paddingLeft: "15px" , borderRadius: '20px', width: '250px', height:"40px", marginBottom:"10px"}}
               placeholder=" enter username"
               type="text"
               id="username"
@@ -66,7 +66,7 @@ export default function Login({ currentUser, setCurrentUser }) {
             {/* Password Input */}
             <label hidden htmlFor="password"></label>
             <input
-              style={{paddingLeft: "15px" ,borderRadius: '20px', width: '250px'}}
+              style={{paddingLeft: "15px" ,borderRadius: '20px', width: '250px', height:"40px", marginBottom:"10px"}}
               placeholder=" enter password"
               type="password"
               id="password"
