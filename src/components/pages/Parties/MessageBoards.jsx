@@ -19,13 +19,14 @@ export default function MessageBoards({currentUser, currentParty}){
                 .then(resp => {
                     setBoardMsg(resp.data[0].messages)       
                     setBoard(resp.data[0])        
-                    // updateScroll()                                             
-                    scrollToBottom()
-                    counter += 1                    
+                    updateScroll()                                             
+                    // scrollToBottom()
+                    counter += 1        
+                    console.log(counter)            
                     if(counter === 15) return clearInterval(interval)
                 })
             })()
-        }, 3000)          
+        }, 2000)          
         
         return () => {            
             clearInterval(interval)
@@ -33,27 +34,28 @@ export default function MessageBoards({currentUser, currentParty}){
     },[currentParty, fetchMsg])
 
     moment.locale('en')
-    const messageEndRef = useRef(null)
+
+    // const messageEndRef = useRef(null)
     
-    const scrollToBottom = () => {
-        messageEndRef.current.scrollIntoView({ behavior : 'smooth'})
-    }
+    // const scrollToBottom = () => {
+    //     messageEndRef.current.scrollIntoView({ behavior : 'smooth'})
+    // }
 
     const listChatMsg = boardMsg.map((element, idx) => {
         return (
             <>
-            <div className={currentUser.id===element.userId ? "message-container chat-user-color" : "message-container" } id={`key-${idx}`} ref={messageEndRef}>
-             <span className='chat-user'><small>{moment(element.createdAt).format('HH:mm d MMM yyyy')}</small></span>
-             <span className='chat-user'><p>
+            <div className={currentUser.id===element.userId ? "message-container chat-user-color" : "message-container" } >
+             <span className='chat-user'><small>{moment(element.createdAt).format('HH:mm DD MMM yyyy ddd')}</small></span>
+             <span className='chat-user' key={`user-key${idx}`}><p>
                  {
                      currentUser.id===element.userId
                      ?
                      `You `
                      :
-                    `${element.userName}` 
+                    `${element.userName} ` 
                  }
                  said:</p></span>
-             <p>{element.message}</p>
+             <p key={`message-key${idx}`}>{element.message}</p>
             </div>            
             <hr />
             </>
@@ -61,18 +63,20 @@ export default function MessageBoards({currentUser, currentParty}){
     })
     const handleFormSubmit = async (e) => {
         e.preventDefault()
-        console.log(form)
+        // console.log(form)
         await axios.put(`${process.env.REACT_APP_SERVER_URL}/board/${board._id}`, form)
         .then(resp => {
             setFetchMsg(!fetchMsg)                     
-            scrollToBottom()                 
+            // scrollToBottom()
+            updateScroll()
+            setForm({...form, message:''})                 
         })
     }
-    // function updateScroll(){
-    //     let element = document.getElementById("msg");
-    //     element.scrollTop = element.scrollHeight + 100;
-    //     // element.scrollIntoView({behavior:'smooth', block:'center'})
-    // }
+    function updateScroll(){
+        let element = document.getElementById("msg");
+        element.scrollTop = element.scrollHeight + 100;
+        // element.scrollIntoView({behavior:'smooth', block:'center'})
+    }
 
     return(
         <>
@@ -82,7 +86,7 @@ export default function MessageBoards({currentUser, currentParty}){
         <div className='message-footer'>  
         <form onSubmit={handleFormSubmit}>
         <label htmlFor='message' className="msg-ele"></label> 
-        <textarea className='msg-ele' type='text' id='message' value={form.message} onChange={(e) =>setForm({...form, message:e.target.value})}/>
+        <textarea className='msg-ele' type='text' id='message' value={form.message} onChange={(e) =>setForm({...form, message:e.target.value})} onFocus={()=>setFetchMsg(!fetchMsg)}/>
         <button type='submit'>Send</button>
         </form>
       </div>
